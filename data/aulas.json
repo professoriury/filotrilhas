@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-21",
+  "lessons": [
+    {
+      "id": "perguntar-filosofia",
+      "title": "O que significa filosofar?",
+      "grades": ["1º ano", "2º ano"],
+      "discipline": "Filosofia",
+      "topic": "Introdução à Filosofia",
+      "trackId": "comecar-a-perguntar",
+      "objective": "Reconhecer a atitude filosófica como exercício de pergunta, análise e argumentação.",
+      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "summary": "Filosofar não é decorar respostas prontas. É observar o que parece óbvio, formular perguntas e construir razões para pensar sobre o mundo. Nesta aula, o ponto de partida é a própria atitude de perguntar.",
+      "keyConcepts": ["atitude filosófica", "problematização", "argumentação", "espanto"],
+      "recovery": "Escolha uma afirmação comum do cotidiano. Escreva duas perguntas que poderiam ajudar a examiná-la com mais cuidado.",
+      "activity": "Em dupla ou individualmente, compare uma opinião e uma justificativa. Que razões sustentam cada uma? Registe a diferença entre afirmar e argumentar.",
+      "challenge": "Escreva uma pergunta filosófica sobre algo que você considera importante na escola ou na comunidade. Explique por que ela não se resolve com uma resposta de sim ou não.",
+      "materials": [],
+      "studyQuestions": ["O que diferencia uma pergunta filosófica de uma pergunta factual?", "Como uma justificativa pode tornar uma opinião mais consistente?"],
+      "keywords": ["filosofar", "filosofia", "pergunta", "argumento", "atitude filosófica"],
+      "status": "demo",
+      "updatedAt": "2026-10-21"
+    },
+    {
+      "id": "etica-e-escolhas",
+      "title": "Ética: escolhas e convivência",
+      "grades": ["2º ano"],
+      "discipline": "Filosofia",
+      "topic": "Ética",
+      "trackId": "escolhas-em-comum",
+      "objective": "Analisar como valores e consequências participam de decisões éticas no cotidiano.",
+      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "summary": "A ética investiga como justificamos escolhas e como nossas ações afetam outras pessoas. Em vez de oferecer uma lista automática de respostas, ajuda a explicitar valores, deveres e consequências em situações de convivência.",
+      "keyConcepts": ["ética", "valor", "responsabilidade", "convivência"],
+      "recovery": "Retome uma situação cotidiana em que duas pessoas discordaram. Identifique os valores que podem estar em jogo para cada lado.",
+      "activity": "Leia uma situação de decisão coletiva proposta pela turma. Registe quem é afetado, quais valores entram em conflito e que razões apoiam cada alternativa.",
+      "challenge": "Escreva uma proposta de convivência para a turma e inclua uma justificativa que considere também quem poderia discordar dela.",
+      "materials": [],
+      "studyQuestions": ["Por que uma escolha ética pode envolver conflito entre valores?", "Que diferença há entre dizer ‘eu prefiro’ e justificar uma decisão?"],
+      "keywords": ["ética", "escolha", "moral", "convivência", "responsabilidade", "valores"],
+      "status": "demo",
+      "updatedAt": "2026-10-21"
+    },
+    {
+      "id": "conhecimento-e-verdade",
+      "title": "Conhecimento, evidência e verdade",
+      "grades": ["3º ano"],
+      "discipline": "Filosofia",
+      "topic": "Teoria do conhecimento",
+      "trackId": "como-sabemos",
+      "objective": "Distinguir opinião, evidência e conhecimento e reconhecer a importância de justificar afirmações.",
+      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "summary": "Quando dizemos que sabemos algo, que tipo de razão apresentamos? A reflexão sobre o conhecimento examina fontes, evidências, critérios e limites das afirmações. Uma afirmação convincente ainda pode precisar de verificação.",
+      "keyConcepts": ["conhecimento", "evidência", "verdade", "justificação", "opinião"],
+      "recovery": "Escolha uma afirmação que circulou recentemente. Separe o que é afirmação, que evidência foi apresentada e o que ainda precisaria ser confirmado.",
+      "activity": "Compare duas explicações para o mesmo acontecimento. Para cada uma, anote a evidência usada, a origem da informação e uma pergunta que continua aberta.",
+      "challenge": "Escreva um pequeno roteiro de três perguntas para verificar uma afirmação antes de compartilhá-la.",
+      "materials": [],
+      "studyQuestions": ["Que diferença há entre uma opinião e uma afirmação justificada?", "Por que conhecer a fonte de uma informação importa?"],
+      "keywords": ["conhecimento", "verdade", "evidência", "opinião", "justificação", "filósofos"],
+      "status": "demo",
+      "updatedAt": "2026-10-21"
+    }
+  ],
+  "tracks": [
+    {"id": "comecar-a-perguntar", "title": "Começar a perguntar", "discipline": "Filosofia", "grades": ["1º ano", "2º ano"], "description": "Um primeiro percurso sobre a atitude filosófica e a construção de argumentos.", "lessonIds": ["perguntar-filosofia"], "status": "demo"},
+    {"id": "escolhas-em-comum", "title": "Escolhas em comum", "discipline": "Filosofia", "grades": ["2º ano"], "description": "Investigue valores e razões que ajudam a pensar a vida coletiva.", "lessonIds": ["etica-e-escolhas"], "status": "demo"},
+    {"id": "como-sabemos", "title": "Como sabemos?", "discipline": "Filosofia", "grades": ["3º ano"], "description": "Um percurso para examinar evidências, justificativas e limites do conhecimento.", "lessonIds": ["conhecimento-e-verdade"], "status": "demo"}
+  ],
+  "weeklyQuestion": {
+    "id": "semana-demo-01",
+    "prompt": "Uma estudante lê uma afirmação compartilhada em um grupo e decide verificar de onde veio a informação antes de repassá-la. Qual atitude está mais diretamente presente nessa decisão?",
+    "options": ["Aceitar a afirmação por ser popular", "Investigar razões e evidências antes de concluir", "Substituir a fonte por uma opinião pessoal", "Evitar qualquer pergunta sobre a informação"],
+    "correctIndex": 1,
+    "explanation": "Verificar a origem e as evidências é uma forma de suspender a aceitação imediata e examinar as razões disponíveis. Isso não garante, por si só, uma conclusão definitiva, mas torna a análise mais cuidadosa.",
+    "source": "Questão autoral fictícia para demonstração; não publicada e não oficial.",
+    "provenance": "autoral-demo"
+  },
+  "enemQuestions": [
+    {
+      "id": "enem-demo-01",
+      "year": null,
+      "application": "Demonstração — sem aplicação oficial",
+      "discipline": "Filosofia",
+      "topic": "Conhecimento e evidência",
+      "prompt": "Ao comparar duas explicações para um mesmo fato, uma turma decide observar quais evidências sustentam cada uma e quais dúvidas permanecem. Essa prática se aproxima de uma atitude de:",
+      "options": ["investigação crítica das justificativas", "aceitação automática da primeira explicação", "abandono de qualquer critério de análise", "substituição de evidência por popularidade"],
+      "correctIndex": 0,
+      "explanation": "Examinar evidências e reconhecer dúvidas remanescentes caracteriza uma investigação crítica, sem confundir confiança inicial com comprovação.",
+      "analysis": ["Correta: considera evidências e examina justificativas.", "Não há aceitação automática no enunciado.", "A turma está usando critérios de análise, não os abandonando.", "Popularidade não é apresentada como evidência."],
+      "source": "Questão autoral fictícia para demonstração; não publicada e não oficial.",
+      "provenance": "autoral",
+      "status": "demo"
+    }
+  ]
+}

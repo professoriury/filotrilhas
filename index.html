@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c3a">
+  <meta name="description" content="Trilhas de estudo, revisão e prática para o Ensino Médio.">
+  <title>Trilha — aprender no seu ritmo</title>
+  <link rel="icon" href="assets/trilha-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="./" aria-label="Trilha — início">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>trilha<span class="brand-period">.</span><small>ESTUDO EM MOVIMENTO</small></span>
+      </a>
+      <div class="nav-caption">SEU ESPAÇO</div>
+      <nav class="primary-nav">
+        <a class="nav-link active" href="#inicio"><span class="nav-icon icon-home" aria-hidden="true"></span>Início</a>
+        <a class="nav-link" href="#series"><span class="nav-icon icon-book" aria-hidden="true"></span>Minhas séries</a>
+        <a class="nav-link" href="#trilhas"><span class="nav-icon icon-path" aria-hidden="true"></span>Trilhas</a>
+        <a class="nav-link" href="#recuperacao"><span class="nav-icon icon-refresh" aria-hidden="true"></span>Recuperação</a>
+        <a class="nav-link" href="#enem"><span class="nav-icon icon-target" aria-hidden="true"></span>Modo ENEM</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-progress">
+          <div class="mini-progress-top"><span>Seu percurso</span><strong id="sidebar-progress">0%</strong></div>
+          <div class="progress-track"><span id="sidebar-progress-bar"></span></div>
+          <p>O progresso fica só neste dispositivo.</p>
+        </div>
+        <a class="teacher-link" href="#professor"><span class="nav-icon icon-sliders" aria-hidden="true"></span>Área do professor</a>
+      </div>
+    </aside>
+
+    <main id="conteudo" class="main-content">
+      <header class="topbar" id="inicio">
+        <div class="breadcrumbs"><span>ENSINO MÉDIO</span><span class="crumb-dot">/</span><strong>SEU ESPAÇO DE APRENDIZAGEM</strong></div>
+        <div class="topbar-right"><span class="status-dot"></span><span>Sem cadastro</span><button class="menu-toggle" type="button" aria-label="Abrir navegação" aria-expanded="false">Menu</button></div>
+      </header>
+
+      <section class="hero-section">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-line"></span> UM PASSO DE CADA VEZ</span>
+          <h1>Conhecimento<br><em>abre caminhos.</em></h1>
+          <p>Escolha uma trilha, revise no seu ritmo e acompanhe o que já conquistou.</p>
+          <a class="button button-dark" href="#series">Explorar minhas séries <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-note" aria-label="Lembrete de estudo">
+          <span class="note-index">NOTA 01 <span>—</span> FILOSOFIA</span>
+          <p>“A pergunta certa<br>já é parte do caminho.”</p>
+          <span class="note-foot">COMECE POR ONDE ESTÁ.</span>
+          <span class="note-orbit" aria-hidden="true"></span>
+        </div>
+        <div class="hero-number" aria-hidden="true">01</div>
+      </section>
+
+      <section class="section-block series-block" id="series">
+        <div class="section-heading">
+          <div><span class="eyebrow">SEU PONTO DE PARTIDA</span><h2>Escolha sua série</h2></div>
+          <p>Conteúdos organizados para<br>acompanhar cada etapa.</p>
+        </div>
+        <div class="series-grid" id="series-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section-block search-section" id="buscar">
+        <div class="section-heading compact-heading">
+          <div><span class="eyebrow">ENCONTRE SEU PRÓXIMO PASSO</span><h2>Buscar conteúdos</h2></div>
+          <span class="result-count" id="search-count">Todos os conteúdos</span>
+        </div>
+        <form id="search-form" class="search-tools" role="search">
+          <label class="search-box"><span class="search-symbol" aria-hidden="true"></span><span class="sr-only">Buscar por tema, filósofo ou palavra-chave</span><input id="search-input" type="search" placeholder="Ex.: Sócrates, ética, conhecimento…" autocomplete="off"><kbd>/</kbd></label>
+          <label class="filter-label"><span class="sr-only">Filtrar por série</span><select id="filter-grade"><option value="">Todas as séries</option><option value="1º ano">1º ano</option><option value="2º ano">2º ano</option><option value="3º ano">3º ano</option></select></label>
+          <label class="filter-label"><span class="sr-only">Filtrar por disciplina</span><select id="filter-subject"><option value="">Todas as disciplinas</option></select></label>
+          <label class="filter-label"><span class="sr-only">Filtrar por material</span><select id="filter-type"><option value="">Todos os materiais</option><option value="vídeo">Vídeo</option><option value="atividade">Atividade</option><option value="resumo">Resumo</option><option value="recuperação">Recuperação</option><option value="desafio">Desafio</option><option value="material">Material complementar</option></select></label>
+        </form>
+        <div id="search-results" class="lesson-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section-block dashboard-grid">
+        <div class="section-column" id="trilhas">
+          <div class="section-heading compact-heading"><div><span class="eyebrow">PERCURSOS GUIADOS</span><h2>Trilhas de aprendizagem</h2></div><span class="section-index">01 — 03</span></div>
+          <div id="tracks-list" class="track-list"></div>
+        </div>
+        <div class="section-column recent-column">
+          <div class="section-heading compact-heading"><div><span class="eyebrow">RETOME DE ONDE PAROU</span><h2>Aulas recentes</h2></div><span class="section-index">ÚLTIMAS</span></div>
+          <div id="recent-lessons" class="recent-list"></div>
+        </div>
+      </section>
+
+      <section class="section-block recovery-section" id="recuperacao">
+        <div class="recovery-copy"><span class="eyebrow eyebrow-light">SEM PRESSA. SEM CULPA.</span><h2>Um caminho de volta<br>também é caminho.</h2><p>Revise os conceitos, faça uma atividade de retomada e siga para o desafio final.</p><a class="button button-light" href="#buscar" data-filter-recovery>Ver aulas para retomar <span aria-hidden="true">↗</span></a></div>
+        <div class="recovery-stamp" aria-hidden="true"><span>REVISAR</span><b>↗</b><span>RETOMAR</span></div>
+      </section>
+
+      <section class="section-block question-enem-grid">
+        <div class="weekly-card" id="questao-semana">
+          <div class="card-topline"><span class="eyebrow">PAUSA PARA PENSAR</span><span class="week-tag">QUESTÃO DA SEMANA</span></div>
+          <h2>Uma boa pergunta<br>muda o olhar.</h2>
+          <div id="weekly-question"></div>
+        </div>
+        <div class="enem-card" id="enem">
+          <div class="card-topline"><span class="eyebrow">PRÁTICA COM PROPÓSITO</span><span class="section-index">CADERNO 02</span></div>
+          <h2>Modo ENEM</h2>
+          <p>Questões organizadas por ano, aplicação, disciplina e tema. Demonstrações são identificadas; fontes declaradas pelo professor não são verificadas automaticamente pelo site.</p>
+          <div class="enem-filters">
+            <label><span class="sr-only">Filtrar questões ENEM por ano</span><select id="enem-year"><option value="">Todos os anos</option></select></label>
+            <label><span class="sr-only">Filtrar questões ENEM por aplicação</span><select id="enem-application"><option value="">Todas as aplicações</option></select></label>
+            <label><span class="sr-only">Filtrar questões ENEM por disciplina</span><select id="enem-subject"><option value="">Todas as disciplinas</option></select></label>
+            <label><span class="sr-only">Filtrar questões ENEM por tema</span><select id="enem-topic"><option value="">Todos os temas</option></select></label>
+          </div>
+          <div id="enem-questions" class="enem-question-list"></div>
+        </div>
+      </section>
+
+      <section class="section-block progress-section" id="progresso">
+        <div class="section-heading"><div><span class="eyebrow">CADA ETAPA CONTA</span><h2>Seu progresso</h2></div><span class="local-label"><span class="status-dot"></span> SALVO NESTE NAVEGADOR</span></div>
+        <div class="progress-panel"><div class="progress-summary"><strong id="progress-percent">0%</strong><span>das etapas marcadas como concluídas</span></div><div class="progress-track progress-track-large"><span id="overall-progress-bar"></span></div><div class="achievement-row" id="achievements"></div></div>
+        <p class="privacy-note">O progresso não sincroniza entre dispositivos e pode ser perdido ao limpar os dados do navegador. Atividades e vídeos externos não são marcados como concluídos automaticamente — você decide quando finalizar cada etapa.</p>
+      </section>
+
+      <section class="section-block teacher-section" id="professor">
+        <div class="section-heading"><div><span class="eyebrow">CONTEÚDO SOB SEU CONTROLE</span><h2>Painel do professor</h2></div><span class="teacher-tag">EDIÇÃO LOCAL · SEM PUBLICAÇÃO AUTOMÁTICA</span></div>
+        <div class="teacher-intro"><p>Edite o conteúdo no formulário e exporte um arquivo JSON completo. Para publicar, substitua <code>data/aulas.json</code> no repositório GitHub e aguarde a atualização do Pages.</p><div class="teacher-warning"><strong>Importante</strong><span>As alterações deste painel ficam nesta sessão até você baixar o JSON. A plataforma não envia nem publica alterações no GitHub.</span></div></div>
+        <div class="teacher-tabs" role="tablist" aria-label="Ferramentas do professor"><button class="teacher-tab active" id="tab-lessons" type="button" role="tab" aria-controls="panel-lessons" aria-selected="true" tabindex="0" data-tab="lessons">Aulas</button><button class="teacher-tab" id="tab-tracks" type="button" role="tab" aria-controls="panel-tracks" aria-selected="false" tabindex="-1" data-tab="tracks">Trilhas</button><button class="teacher-tab" id="tab-weekly" type="button" role="tab" aria-controls="panel-weekly" aria-selected="false" tabindex="-1" data-tab="weekly">Questão da Semana</button><button class="teacher-tab" id="tab-enem-editor" type="button" role="tab" aria-controls="panel-enem-editor" aria-selected="false" tabindex="-1" data-tab="enem-editor">Questões ENEM</button></div>
+        <div class="teacher-panel active" id="panel-lessons" role="tabpanel" aria-labelledby="tab-lessons" tabindex="0">
+          <div class="editor-toolbar"><label class="filter-label"><span class="sr-only">Selecionar aula para editar</span><select id="edit-lesson-select"><option value="">Nova aula</option></select></label><button class="button button-outline" id="new-lesson-button" type="button">＋ Nova aula</button></div>
+          <form id="lesson-form" class="editor-form">
+            <div class="form-grid">
+              <label>Título<input name="title" required maxlength="120"></label><label>ID único<input name="id" required pattern="[a-z0-9-]+" title="Use letras minúsculas, números e hífens" maxlength="80"></label>
+              <fieldset class="grade-field"><legend>Séries (selecione uma ou mais)</legend><label><input type="checkbox" name="grades" value="1º ano"> 1º ano</label><label><input type="checkbox" name="grades" value="2º ano"> 2º ano</label><label><input type="checkbox" name="grades" value="3º ano"> 3º ano</label></fieldset>
+              <label>Disciplina<input name="discipline" required value="Filosofia"></label><label>Tema<input name="topic" required></label><label>Trilha<select name="trackId" id="lesson-track-select"><option value="">Sem trilha</option></select></label><label>Objetivo de aprendizagem<input name="objective"></label>
+              <label>Link do vídeo (opcional)<input name="videoUrl" type="text" placeholder="https://… ou caminho relativo seguro"></label><label>Nome/descrição do vídeo<input name="videoLabel" placeholder="Ex.: vídeo de retomada"></label><label class="video-published-field"><input name="videoPublished" type="checkbox"> Vídeo disponível para estudantes</label>
+              <label class="full-field">Resumo<textarea name="summary" rows="4" required></textarea></label><label class="full-field">Conceitos-chave (separados por vírgula)<input name="keyConcepts"></label>
+              <label class="full-field">Atividade de retomada<textarea name="recovery" rows="3"></textarea></label><label class="full-field">Atividade prática<textarea name="activity" rows="3"></textarea></label><label class="full-field">Desafio final<textarea name="challenge" rows="3"></textarea></label>
+              <label class="full-field">Questões do estudo dirigido (uma questão por linha)<textarea name="studyQuestions" rows="3"></textarea></label><label class="full-field">Materiais complementares (um por linha; use rótulo | URL para dar um nome)<textarea name="materials" rows="2" placeholder="Leitura de apoio | https://…"></textarea></label>
+              <label>Status<select name="status"><option value="demo">Demonstração</option><option value="published">Publicado</option><option value="draft">Rascunho</option></select></label>
+            </div>
+            <div class="form-actions"><button class="button button-dark" type="submit">Guardar na sessão</button><button class="button button-outline" type="button" id="delete-lesson-button">Excluir aula selecionada</button></div>
+            <p class="form-feedback" id="lesson-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="teacher-panel" id="panel-tracks" role="tabpanel" aria-labelledby="tab-tracks" tabindex="0" hidden>
+          <div class="editor-toolbar"><label class="filter-label"><span class="sr-only">Selecionar trilha para editar</span><select id="edit-track-select"><option value="">Nova trilha</option></select></label><button class="button button-outline" id="new-track-button" type="button">＋ Nova trilha</button></div>
+          <form id="track-form" class="editor-form"><div class="form-grid"><label>ID único<input name="id" required pattern="[a-z0-9-]+" title="Use letras minúsculas, números e hífens"></label><label>Título<input name="title" required maxlength="120"></label><label>Disciplina<input name="discipline" required></label><fieldset class="grade-field"><legend>Séries desta trilha</legend><label><input type="checkbox" name="trackGrades" value="1º ano"> 1º ano</label><label><input type="checkbox" name="trackGrades" value="2º ano"> 2º ano</label><label><input type="checkbox" name="trackGrades" value="3º ano"> 3º ano</label></fieldset><label class="full-field">Descrição<textarea name="description" rows="3"></textarea></label><fieldset class="grade-field full-field"><legend>Aulas da trilha (uma aula pode pertencer a uma trilha)</legend><div id="track-lesson-options" class="track-lesson-options"></div></fieldset><label>Status<select name="status"><option value="demo">Demonstração</option><option value="published">Publicado</option><option value="draft">Rascunho</option></select></label></div><div class="form-actions"><button class="button button-dark" type="submit">Guardar trilha na sessão</button><button class="button button-outline" id="delete-track-button" type="button">Excluir trilha selecionada</button></div><p class="form-feedback" id="track-feedback" aria-live="polite"></p></form>
+        </div>
+        <div class="teacher-panel" id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly" tabindex="0" hidden>
+          <form id="weekly-form" class="editor-form"><div class="form-grid"><label class="full-field">Enunciado<textarea name="prompt" rows="3" required></textarea></label><label class="full-field">Alternativas (uma por linha)<textarea name="options" rows="4" required></textarea></label><label>Índice da resposta correta (começa em 1)<input name="correctIndex" type="number" min="1" required></label><label>Fonte ou identificação da demonstração<input name="source" required></label><label class="full-field">Comentário explicativo<textarea name="explanation" rows="3" required></textarea></label></div><div class="form-actions"><button class="button button-dark" type="submit">Atualizar questão</button></div><p class="form-feedback" id="weekly-feedback" aria-live="polite"></p></form>
+        </div>
+        <div class="teacher-panel" id="panel-enem-editor" role="tabpanel" aria-labelledby="tab-enem-editor" tabindex="0" hidden>
+          <form id="enem-form" class="editor-form"><div class="form-grid"><label class="full-field">Enunciado<textarea name="prompt" rows="3" required></textarea></label><label class="full-field">Alternativas (uma por linha)<textarea name="options" rows="4" required></textarea></label><label>Índice da resposta correta<input name="correctIndex" type="number" min="1" required></label><label>Ano (vazio se autoral)<input name="year" type="number" min="1998" max="2100"></label><label>Aplicação<input name="application" placeholder="Ex.: regular, PPL, digital"></label><label>Disciplina<input name="discipline" required></label><label>Tema<input name="topic" required></label><label>Tipo<select name="provenance"><option value="autoral">Questão autoral</option><option value="oficial">Declarada oficial</option></select></label><label class="full-field">Referência da fonte (oficial: INEP/domínio gov.br + ENEM + ano + nº da questão/item; não verificada automaticamente)<input name="source" placeholder="INEP, ENEM 2024, aplicação regular, caderno 1, questão 12; ou URL gov.br com referência do item"></label><label class="full-field">Comentário explicativo<textarea name="explanation" rows="3"></textarea></label><label class="full-field">Análise das alternativas (uma por linha; opcional)<textarea name="analysis" rows="3"></textarea></label></div><div class="form-actions"><button class="button button-dark" type="submit">Adicionar questão</button></div><p class="form-feedback" id="enem-feedback" aria-live="polite"></p></form><div id="teacher-enem-list" class="teacher-enem-list"></div></div>
+        <div class="export-row"><div><strong>Pronto para publicar?</strong><p>Baixe todos os dados e substitua o arquivo <code>data/aulas.json</code> no GitHub.</p></div><button class="button button-accent" id="export-json" type="button">Exportar JSON ↓</button></div>
+        <div id="export-feedback" class="export-feedback" role="status" aria-live="polite"></div>
+      </section>
+
+      <footer class="site-footer"><a class="footer-brand" href="./">trilha<span>.</span></a><p>Feito para aprender no seu ritmo.</p><span>ENSINO MÉDIO · FILOSOFIA</span></footer>
+    </main>
+  </div>
+</body>
+</html>
