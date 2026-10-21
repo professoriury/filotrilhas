@@ -43,7 +43,9 @@
     $('#series-grid').innerHTML = grades.map((grade, index) => {
       const lessons = allLessons().filter(lesson => (lesson.grades || []).includes(grade));
       const subjects = [...new Set(lessons.map(lesson => lesson.discipline))].join(' · ') || 'Novos conteúdos em breve';
-      return `<a class="series-card" href="#buscar" data-grade-card="${escapeHtml(grade)}"><span class="series-card-top"><span>ETAPA 0${index + 1}</span><span>${String(lessons.length).padStart(2,'0')} AULAS</span></span><strong>${escapeHtml(grade)}</strong><small>${escapeHtml(subjects)}</small><span class="series-arrow" aria-hidden="true">↗</span></a>`;
+      const stageLabel = index === 2 ? 'Toda a História da Filosofia para o ENEM' : `ETAPA 0${index + 1}`;
+      const stageClass = index === 2 ? 'series-stage-label-long' : '';
+      return `<a class="series-card" href="#buscar" data-grade-card="${escapeHtml(grade)}"><span class="series-card-top"><span class="${stageClass}">${escapeHtml(stageLabel)}</span><span>${String(lessons.length).padStart(2,'0')} AULAS</span></span><strong>${escapeHtml(grade)}</strong><small>${escapeHtml(subjects)}</small><span class="series-arrow" aria-hidden="true">↗</span></a>`;
     }).join('');
     $$('[data-grade-card]').forEach(link => link.addEventListener('click', () => { $('#filter-grade').value = link.dataset.gradeCard; renderSearch(); }));
   }
