@@ -2,41 +2,34 @@
 
 ## Abordagem e arquitetura
 
-Construir uma aplicação estática, sem dependências de execução nem serviços, com HTML, CSS e JavaScript nativos. A raiz conterá `index.html` para navegação inicial e painel, `aula.html` para o detalhe imprimível, `css/styles.css`, módulos em `js/`, dados canónicos em `data/aulas.json`, `manus-routes.json` e um README de edição/publicação. Usar caminhos relativos e resolver a base da aplicação de forma compatível com subdiretórios de repositórios GitHub Pages.
+Manter o site de estudantes como aplicação estática de HTML, CSS e JavaScript nativos, sem servidor, base de dados, contas de estudantes ou APIs pagas. Remover da página pública a navegação e toda a interface de edição/exportação do professor; preservar busca, séries, trilhas, aulas, recuperação, questões e progresso local.
 
-`data/aulas.json` será a fonte de dados para aulas, trilhas, questão semanal e banco de questões ENEM. O painel no navegador carrega, valida e permite editar o conjunto; exporta o JSON completo para download. A publicação é manual: substituir o arquivo no repositório GitHub e aguardar o Pages. Não sugerir sincronização, autenticação ou publicação automática. O progresso e as preferências de estudante usam `localStorage`, com aviso de que não sincronizam entre dispositivos e podem ser perdidos.
+Manter `data/aulas.json` como fonte de dados. Criar um editor como arquivo HTML autónomo fora da raiz e do repositório publicados. O professor abre-o localmente num navegador, carrega o JSON atual, edita aulas, trilhas, Questão da Semana e questões ENEM, valida referências/IDs/links e exporta um novo `aulas.json`. O editor não faz requisições de rede nem guarda credenciais, não envia dados e não publica sozinho.
 
-A interface inicial organiza navegação pelas três séries e oferece busca local sem distinção de acentos, filtros, aulas recentes, trilhas, Recuperação, Questão da Semana, Modo ENEM e indicadores individuais. Detalhe de aula agrega série(s), disciplina, tema/trilha, objetivo, vídeo (somente links fornecidos e identificados; exemplos indisponíveis ficam não publicados), resumo, conceitos, atividade de retomada, desafio, materiais e quatro etapas de progresso. A impressão oculta navegação e gamificação e conserva título, séries, disciplina, resumo, conceitos e questões.
+Atualizar o README com um passo a passo para carregar o JSON no editor, exportar e substituir `data/aulas.json` em `professoriury/filotrilhas` usando a interface GitHub, fazendo commit na `main`. Documentar GitHub Pages: no plano Free a origem do Pages precisa ser pública; se a fonte permanecer privada, é necessário um plano GitHub que permita Pages privado; o site publicado continua público. Não alterar a visibilidade do repositório nem publicar nesta tarefa.
 
-O painel cobre inclusão/edição de aulas, escolha de séries, vídeos, resumos, conceitos, atividades/desafios, trilhas, materiais e publicação; também atualiza a Questão da Semana e questões do banco. A validação conserva conteúdos já carregados, evita IDs duplicados e produz JSON válido. Questões demonstrativas são identificadas como autorais/demonstração; nenhuma questão ou fonte oficial será fabricada.
+Vídeo é um link HTTP/HTTPS validado. O detalhe da aula abre-o numa nova aba, não incorpora um player. Documentar partilha do Video Overview do NotebookLM: link direto de vídeo ou caderno com permissões adequadas; em contas Workspace/Education, o acesso público pode estar limitado ao domínio. Se necessário, descarregar o vídeo e alojá-lo numa plataforma escolar autorizada, depois usar o seu link.
 
 ## Estrutura de projeto
 
-- `index.html`: página principal, navegação por série, cartões, filtros, painéis e formulários de professor.
-- `aula.html`: modelo de estudo, retomada e impressão por identificador de aula.
-- `css/styles.css`: identidade visual responsiva, estados acessíveis e regras de impressão.
-- `js/`: carregamento/resolução de dados, busca e filtros, renderização, progresso, impressão e lógica do editor/exportação.
-- `data/aulas.json`: conteúdo demonstrativo e conteúdo que o professor substitui para publicar.
-- `manus-routes.json`: declaração das rotas do site.
-- `README.md`: estrutura, uso do editor, exportação, atualização manual do JSON e configuração/publicação no GitHub Pages.
+- `index.html`: experiência pública de estudantes, sem menu ou painel de professor.
+- `aula.html`: estudo guiado, atividades, progresso e impressão.
+- `css/styles.css`: identidade visual responsiva e impressão existente; estilos do painel removido deixam de ser usados.
+- `js/app.js`: pesquisa, cartões, trilhas, questões e progresso; sem handlers de edição/exportação.
+- `js/lesson.js`: detalhe de aula e botão de link de vídeo externo validado.
+- `data/aulas.json`: conteúdo canónico das aulas, trilhas e questões.
+- `manus-routes.json`: declaração das rotas públicas, sem alterações se as páginas continuarem iguais.
+- `README.md`: instruções offline, atualização pelo GitHub, publicação e partilha de vídeos.
+- Editor offline: um HTML autónomo entregue separadamente, fora do repositório do site e não publicado aos alunos.
 
 ## Design
 
-Estilos considerados: editorial escolar contemporâneo — 0,08; painel neo-brutalista de alto contraste — 0,06; caderno de campo digital com cores de trilha — 0,04. Escolha: caderno de campo digital, com interface editorial e estrutura de missão.
+Manter o caderno de campo digital já escolhido para o site dos estudantes: clareza antes da decoração, progresso sem competição e sinalética de missão. O editor offline usa a mesma identidade de marca em formulário acessível e simples, com avisos claros de importação/exportação; não exige dependências nem recursos externos.
 
-- **Movimento:** editorial digital de caderno de campo; mistura organização escolar familiar com sinalética de exploração intelectual.
-- **Princípios:** clareza antes da decoração; progresso visível sem competição; hierarquia e contraste; linguagem direta e acolhedora.
-- **Filosofia de cor:** fundo marfim muito claro e tinta azul-marinho para leitura prolongada; verde-petróleo como cor própria de ação/progresso; coral e amarelo-ocre pontuam missão e destaque sem infantilizar.
-- **Paradigma de layout:** faixa de navegação lateral/compacta, cabeçalho editorial e sequência vertical de secções; cartões assimétricos para missão prioritária, apoiados por listas compactas para conteúdo recente.
-- **Elementos distintivos:** marcador de trilha numerado; pequenas etiquetas de série e tema; barras de progresso com segmentos das quatro etapas.
-- **Interação:** ações explícitas, retorno imediato e estado persistente apenas no dispositivo; sem mecânicas competitivas.
-- **Animação:** transições discretas de 120–180 ms para foco/expansão; respeitar `prefers-reduced-motion`; nenhuma animação essencial à compreensão.
-- **Tipografia:** títulos com `Outfit` em pilha local/sistema e corpo com `Inter` em pilha local/sistema; corpo confortável (16 px ou mais), largura de linha contida e hierarquia de títulos consistente; sem dependência obrigatória de fonte externa.
 - **Essência da marca:** uma plataforma de estudo guiado para jovens do Ensino Médio, que transforma conteúdo em percursos claros; curiosa, próxima, prática.
-- **Voz:** títulos curtos e orientados à ação; microtexto honesto e não punitivo. Exemplos: “Escolha seu próximo passo.” “Seu progresso fica neste dispositivo.”
-- **Marca/logótipo:** palavra “trilha” em minúsculas junto a um símbolo próprio de quatro segmentos ascendentes, evocando percurso sem usar ícone infantil.
-- **Cor de marca:** verde-petróleo profundo.
+- **Voz:** direta e acolhedora; exemplos: “Escolha seu próximo passo.” e “Seu progresso fica neste dispositivo.”
+- **Cor e elementos:** verde-petróleo profundo, fundo claro, etiquetas de série e passos numerados, mantendo contraste e legibilidade.
 
-## Limites conhecidos
+## Limites
 
-O texto do anexo disponível termina no meio da secção de execução, depois de “Execute as”. Implementar todos os requisitos completos visíveis e não presumir requisitos adicionais.
+O site continua público e estático; o editor separado protege a interface de edição de ficar exposta no site, mas não é um sistema autenticado nem sincroniza automaticamente com o GitHub. Para atualizar o conteúdo publicado, o professor precisa exportar e substituir o JSON no repositório. Não mudar a visibilidade do repositório, ligar Pages ou publicar sem pedido explícito.

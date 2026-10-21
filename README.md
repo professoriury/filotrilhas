@@ -1,41 +1,46 @@
 # Trilha — aprender no seu ritmo
 
-Plataforma estática e responsiva para organizar aulas, trilhas, retomada e prática no Ensino Médio. A primeira edição traz Filosofia e conteúdo explicitamente demonstrativo. Funciona sem servidor próprio, base de dados, chaves secretas, APIs pagas ou cadastro de estudantes.
+Plataforma estática para estudantes do Ensino Médio, com aulas, trilhas, recuperação, questões, busca, impressão e progresso local. O site não tem servidor, banco de dados, conta de estudante ou sincronização de progresso.
 
-## Estrutura
+## Arquivos do projeto
 
-- `index.html`: início, séries, busca, questão semanal, modo ENEM e painel do professor.
-- `aula.html`: estudo dirigido e visualização imprimível de uma aula.
-- `css/styles.css`: identidade visual, layout responsivo, acessibilidade e impressão.
-- `js/app.js`: início, pesquisa, progresso, filtros, questões e edição/exportação dos dados.
-- `js/lesson.js`: detalhe, etapas, atividades e impressão.
-- `data/aulas.json`: fonte dos conteúdos. As mudanças são publicadas substituindo este arquivo no repositório.
-- `manus-routes.json`: declaração das páginas do site.
+- `index.html`: início e recursos dos estudantes. Não contém Área do professor.
+- `aula.html`: aula, materiais, vídeo externo e estudo dirigido imprimível.
+- `css/styles.css`: identidade visual, acessibilidade, responsividade e impressão.
+- `js/app.js`: busca, filtros, trilhas, questões e progresso.
+- `js/lesson.js`: conteúdo de aula, etapas, link externo de vídeo e impressão.
+- `data/aulas.json`: arquivo único de aulas, trilhas, Questão da Semana e questões ENEM.
+- `manus-routes.json`: rotas públicas declaradas.
 
-## Editar conteúdos sem programar
+O arquivo **Editor offline — Trilha** é entregue separadamente. Guarde-o numa pasta privada do computador do professor; não o coloque no repositório `professoriury/filotrilhas` nem na pasta publicada. Ele abre localmente no navegador e não envia dados pela internet.
 
-1. Abra **Área do professor** na página inicial.
-2. Em **Aulas**, escolha uma aula existente para editar ou selecione **Nova aula**. Associe uma ou mais séries, selecione uma trilha existente e preencha os campos. Ao editar, palavras-chave, rótulos de materiais e estado do vídeo são preservados; marque explicitamente se um vídeo já está disponível aos estudantes.
-3. Em **Trilhas**, crie ou edite título, disciplina, séries, descrição e aulas associadas. Uma aula pertence a uma trilha de cada vez; ao movê-la, as referências recíprocas são atualizadas. Também é possível retirar aulas ou excluir a trilha sem excluir as aulas.
-4. Use **Questão da Semana** para substituir a questão selecionada e **Questões ENEM** para acrescentar, editar ou excluir questões. Para marcar uma questão como oficial, a referência deve identificar INEP (ou usar um URL HTTPS em domínio `gov.br`), ENEM, o ano e o número da questão/item. O site não consulta nem verifica a autenticidade ou disponibilidade da fonte: confirme-a no documento oficial antes de publicar; não use a opção oficial para exemplos inventados.
-5. Clique em **Exportar JSON**. O arquivo inclui os dados carregados e alterados nesta sessão. IDs devem ser globalmente únicos e válidos; o painel verifica campos essenciais, formatos de resposta, links HTTP/HTTPS ou relativos seguros e relações entre aulas e trilhas. Uma questão declarada oficial sem origem e item identificáveis é recusada. Exporte antes de recarregar a página.
-6. No seu repositório, substitua `data/aulas.json` pelo arquivo baixado e faça commit/push. O GitHub Pages fará a publicação conforme a configuração do repositório. O painel não publica por você.
+## Atualizar aulas usando o editor offline
 
-As alterações feitas no formulário permanecem na memória da página até exportar o JSON. Faça o download antes de recarregar ou fechar a página. O arquivo inicial contém dados de demonstração, não aulas publicadas.
+1. Baixe a versão mais recente de `data/aulas.json` em [professoriury/filotrilhas](https://github.com/professoriury/filotrilhas/tree/main/data). No GitHub, abra o arquivo e escolha **Download raw file** (ou **Raw** e depois guardar como `aulas.json`). Sempre comece pelo arquivo mais recente, para não apagar alterações de outra edição.
+2. Abra o arquivo HTML separado **Editor offline — Trilha** (o download desta entrega, fora do repositório e do site) no Chrome, Edge ou Firefox. Clique em **Abrir aulas.json** e selecione o arquivo baixado. O editor não precisa de servidor ou conexão.
+3. Na aba **Aulas**, selecione uma existente ou clique **Nova aula**. Preencha título, série(s), disciplina, tema, trilha, objetivo, resumo, conceitos, atividades, desafio, questões e materiais. Use uma linha por questão do estudo dirigido e uma linha por material. Para material com título, use `Rótulo | URL`. Os IDs devem continuar únicos.
+4. Na aba **Trilhas**, crie ou edite a trilha e selecione as aulas associadas. O editor sincroniza a associação dos dois lados. Atualize a Questão da Semana e as questões ENEM nas respetivas abas; não marque como oficial algo cuja fonte não confirmou.
+5. Clique **Exportar aulas.json**. Se a validação apontar um erro, corrija o campo indicado e exporte novamente. Guarde o arquivo exportado e não feche a janela antes de exportar.
+6. No GitHub, abra `professoriury/filotrilhas`, entre em `data/aulas.json` e clique no lápis **Edit this file**. Substitua o conteúdo pelo conteúdo do arquivo exportado. Use **Commit changes** na branch `main`, com uma mensagem como `Atualiza conteúdos das aulas`. Isso grava a alteração no repositório; não use o editor público do site, pois essa área foi removida.
 
-## Publicar gratuitamente no GitHub Pages
+## Publicar no GitHub Pages
 
-1. Crie um repositório GitHub e envie os arquivos desta pasta para a raiz da branch `main`.
-2. Em **Settings → Pages**, selecione a origem de publicação pela branch `main` e pasta `/(root)` (ou configure a pasta escolhida, se mover os arquivos).
-3. Aguarde a conclusão do deploy e acesse o endereço Pages indicado pelo GitHub. URLs e links internos são relativos e funcionam em repositórios de projeto.
-4. Para cada atualização, substitua `data/aulas.json`, faça commit e push. Nenhuma credencial GitHub é guardada no site.
+O repositório `professoriury/filotrilhas` está privado. O GitHub Pages estático é gratuito no GitHub Free quando a fonte é um repositório público; no plano Free, a fonte precisa ser pública. Se quiser manter o repositório privado, use um plano GitHub que permita Pages para repositórios privados. **Mesmo com a origem privada, o site publicado no Pages fica acessível publicamente.** Não coloque nomes, notas ou outros dados pessoais dos estudantes nos arquivos do site.
 
-É possível verificar localmente usando um servidor estático, por exemplo `python3 -m http.server 8000`, e abrir `http://localhost:8000`. Abrir via `file://` pode impedir o carregamento do JSON por restrições do navegador.
+Para configurar Pages, em `professoriury/filotrilhas`, abra **Settings → Pages**. Em **Build and deployment**, escolha **Deploy from a branch**, selecione `main` e a pasta `/(root)` e clique **Save**. O `index.html` já está na raiz. O GitHub apresenta o endereço e o estado da implantação na mesma página; uma primeira publicação ou alteração pode levar alguns minutos. Depois da configuração, cada commit enviado à branch/pasta escolhida aciona a publicação. Antes de tornar o repositório público, lembre-se de que isso também torna o código e o histórico visíveis, não apenas as aulas.
 
-## Dados e demonstrações
+Se não quiser tornar o repositório público nem usar um plano GitHub com Pages privado, outra possibilidade é publicar a versão estática pelo Webdev/Manus. Este projeto ainda precisa da configuração de saída estática no Webdev e não está publicado por esse caminho. Não acionei publicação nesta alteração. A API do GitHub não permitiu verificar o estado do Pages; confira Settings → Pages antes de fazer commit em main, pois um commit pode publicar automaticamente se o Pages já estiver ativo.
 
-Cada aula contém identificador, título, séries, disciplina, tema, trilha, objetivo, vídeo, resumo, conceitos-chave, atividade de recuperação, atividade, desafio, materiais, questões de estudo e status. Uma aula demonstrativa é partilhada entre 1º e 2º anos sem duplicação do registro. Os exemplos não fornecem links de vídeo ou de materiais funcionais: estão marcados como demonstração e não publicados. A Questão da Semana e a questão de prática são autorais fictícias, explicitamente identificadas como não oficiais. Não há questões oficiais ou fontes inventadas no conjunto inicial. Fontes de questões acrescentadas depois são informação declarada pelo professor, não autenticada automaticamente pelo site.
+## Incluir um vídeo do NotebookLM
 
-## Progresso e privacidade
+A aula aceita um URL HTTP/HTTPS ou um caminho relativo seguro dentro do repositório (por exemplo, `videos/aula.mp4`), um rótulo e uma indicação de disponibilidade. No site atual, os estudantes veem um botão que abre o link numa nova aba; o vídeo **não** aparece incorporado num player. No editor, adicione o URL no campo **Link do vídeo**, escolha um rótulo e marque que está disponível somente depois de testar o acesso.
 
-As quatro etapas (Assistir, Estudar, Praticar, Refletir) só são concluídas quando o estudante escolhe marcá-las. O progresso usa armazenamento local do navegador, não exige conta, não sincroniza entre dispositivos e pode ser perdido ao limpar os dados do navegador. Não há ranking público; atividades ou vídeos externos não são concluídos automaticamente.
+Para compartilhar um Video Overview do NotebookLM/Gemini Notebook, abra a visão geral, escolha **Share** e copie o link. A ajuda oficial informa que quem recebe o vídeo precisa ter acesso ao caderno completo ou o caderno precisa estar compartilhado como **Anyone with a link**. Antes de ativar um link público, confira quais fontes e materiais estão no caderno. Em contas Google Workspace/Education, a partilha pública pode estar desativada ou limitada às pessoas do mesmo domínio. Consulte a [ajuda oficial de Video Overviews](https://support.google.com/gemininotebook/answer/16454555?hl=pt-BR).
+
+Como alternativa, o NotebookLM permite descarregar o vídeo. Pode colocar o ficheiro numa plataforma autorizada pela escola (por exemplo, Drive com acesso limitado ao domínio escolar) e inserir no editor o link de partilha testado. Um vídeo do YouTube como **não listado** é acessível a quem tiver o URL; isso não equivale a uma proteção por palavra-passe. O link de Drive/YouTube continua a abrir em nova aba no site.
+
+## Dados e privacidade dos estudantes
+
+O editor offline trabalha numa cópia carregada manualmente. Guardar dados no editor não atualiza o repositório: é preciso exportar o JSON e fazer commit em `main`. O site usa `localStorage` para guardar o progresso no dispositivo do aluno; esse progresso não se sincroniza entre aparelhos e pode ser perdido quando os dados do navegador são limpos. Não há contas de estudante, ranking público ou recolha de nomes/notas. O site e os links do Pages são públicos; não armazene neles dados que precisem de acesso restrito.
+
+As questões declaradas oficiais continuam sendo informação fornecida pelo professor, não verificada automaticamente. Para ENEM, a referência deve indicar INEP ou um domínio HTTPS `gov.br`, ENEM, ano e número da questão/item; confirme a fonte no documento oficial antes de publicar.
