@@ -35,7 +35,8 @@
   }
   function card(lesson) {
     const pct = Math.round(lessonDoneCount(lesson) / 4 * 100);
-    return `<a class="lesson-card" href="aula.html?id=${encodeURIComponent(lesson.id)}"><div class="lesson-meta"><span class="pill">${escapeHtml((lesson.grades || []).join(' · '))}</span><span class="pill">${escapeHtml(lesson.discipline)}</span>${badge(lesson)}</div><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.topic)} · ${escapeHtml(lesson.objective || '')}</p><div class="card-foot"><span>${escapeHtml(lesson.trackId || 'Aula')}</span><span class="card-progress"><span>${pct}%</span><span class="progress-track"><span style="width:${pct}%"></span></span></span></div></a>`;
+    const trackTitle = (data.tracks || []).find(track => track.id === lesson.trackId)?.title || 'Aula';
+    return `<a class="lesson-card" href="aula.html?id=${encodeURIComponent(lesson.id)}"><div class="lesson-meta"><span class="pill">${escapeHtml((lesson.grades || []).join(' · '))}</span><span class="pill">${escapeHtml(lesson.discipline)}</span>${badge(lesson)}</div><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.topic)} · ${escapeHtml(lesson.objective || '')}</p><div class="card-foot"><span>${escapeHtml(trackTitle)}</span><span class="card-progress"><span>${pct}%</span><span class="progress-track"><span style="width:${pct}%"></span></span></span></div></a>`;
   }
   function renderSeries() {
     const displayNames = ['1ª Série', '2ª Série', '3ª Série'];
@@ -51,8 +52,8 @@
   }
   function searchableText(lesson) {
     const videoType = lesson.video?.url ? ' vídeo ' : '';
-    const materialType = (lesson.recovery ? ' recuperação atividade ' : '') + (lesson.summary ? ' resumo ' : '') + (lesson.activity ? ' atividade ' : '');
-    return normalize([lesson.title, lesson.topic, lesson.discipline, lesson.objective, lesson.summary, lesson.recovery, lesson.activity, lesson.challenge, ...(lesson.grades || []), ...(lesson.keyConcepts || []), ...(lesson.keywords || []), ...(lesson.materials || []).map(item => typeof item === 'string' ? item : item.label || item.url), videoType, materialType, lesson.challenge ? ' desafio ' : '', (lesson.materials || []).length ? ' material complementar ' : ''].join(' '));
+    const materialType = (lesson.summary ? ' resumo ' : '') + (lesson.activity || lesson.challenge ? ' atividade ' : '') + (lesson.recommendations ? ' recomendação ' : '');
+    return normalize([lesson.title, lesson.topic, lesson.discipline, lesson.objective, lesson.summary, lesson.activity, lesson.challenge, lesson.recommendations, ...(lesson.grades || []), ...(lesson.keyConcepts || []), ...(lesson.keywords || []), ...(lesson.materials || []).flatMap(item => typeof item === 'string' ? [item] : [item.label, item.text, item.url]), videoType, materialType, lesson.challenge ? ' pergunta complementar ' : '', (lesson.materials || []).length ? ' referência referências ' : ''].join(' '));
   }
   function renderSearch() {
     const term = normalize($('#search-input').value);
@@ -65,10 +66,10 @@
       const text = searchableText(lesson);
       if (term && !text.includes(term)) return false;
       if (type === 'vídeo' && !lesson.video?.url) return false;
-      if (type === 'atividade' && !lesson.activity) return false;
+      if (type === 'atividade' && !lesson.activity && !lesson.challenge) return false;
       if (type === 'resumo' && !lesson.summary) return false;
-      if (type === 'recuperação' && !lesson.recovery) return false;
       if (type === 'desafio' && !lesson.challenge) return false;
+      if (type === 'recommendation' && !lesson.recommendations?.trim()) return false;
       if (type === 'material' && !(lesson.materials || []).length) return false;
       return true;
     });
@@ -175,7 +176,6 @@
     $('#search-input').addEventListener('input', renderSearch);
     ['#filter-grade','#filter-subject','#filter-type'].forEach(selector => $(selector).addEventListener('change', renderSearch));
     document.addEventListener('keydown', event => { if (event.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) { event.preventDefault(); $('#search-input').focus(); } });
-    $('[data-filter-recovery]').addEventListener('click', () => { $('#filter-type').value = 'recuperação'; renderSearch(); });
   }
   function validateData(candidate) {
     const fail = message => message;
@@ -194,8 +194,14 @@
       if (lesson.trackId && !trackById.has(lesson.trackId)) return fail(`A aula “${lesson.id}” aponta para uma trilha inexistente.`);
       if (lesson.trackId && !(trackById.get(lesson.trackId).lessonIds || []).includes(lesson.id)) return fail(`A aula “${lesson.id}” e a sua trilha não têm associação recíproca.`);
       if (lesson.video?.url && !safeLink(lesson.video.url)) return fail(`O vídeo da aula “${lesson.id}” usa um protocolo de URL não permitido.`);
+      if (lesson.recommendations != null && typeof lesson.recommendations !== 'string') return fail(`As Recomendações POP da aula “${lesson.id}” devem ser texto.`);
       if (!Array.isArray(lesson.materials || [])) return fail(`Os materiais da aula “${lesson.id}” devem ser uma lista.`);
-      if ((lesson.materials || []).some(item => !safeLink(typeof item === 'string' ? item : item?.url))) return fail(`Um material da aula “${lesson.id}” usa um protocolo de URL não permitido.`);
+      if ((lesson.materials || []).some(item => {
+        if (typeof item === 'string') return !item.trim() || (/^https?:\/\//i.test(item.trim()) && !safeLink(item));
+        if (!item || typeof item !== 'object') return true;
+        const url = String(item.url || '').trim(), label = String(item.label || item.text || '').trim();
+        return (!url && !label) || Boolean(url && !safeLink(url));
+      })) return fail(`Uma referência da aula “${lesson.id}” está vazia ou contém um link inválido.`);
     }
     for (const track of candidate.tracks) {
       if (!track.title?.trim() || !track.discipline?.trim() || !Array.isArray(track.grades) || !track.grades.length || track.grades.some(grade => !gradesAllowed.has(grade)) || !Array.isArray(track.lessonIds)) return fail(`A trilha “${track.id}” tem campos obrigatórios inválidos.`);

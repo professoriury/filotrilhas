@@ -1,14 +1,14 @@
 # Trilha — aprender no seu ritmo
 
-Plataforma estática para estudantes do Ensino Médio, com aulas, trilhas, recuperação, questões, busca, impressão e progresso local. O site não tem servidor, banco de dados, conta de estudante ou sincronização de progresso.
+Plataforma estática para estudantes do Ensino Médio, com aulas, trilhas, questões, busca, impressão e progresso local. As aulas apresentam vídeo, resumo, conceitos-chave, Recomendações POP, Atividade Reflexiva, Estudo Dirigido e Referências; o Modo Recuperação foi removido. O site não tem servidor, banco de dados, conta de estudante ou sincronização de progresso.
 
 ## Arquivos do projeto
 
 - `index.html`: início e recursos dos estudantes. Não contém Área do professor.
-- `aula.html`: aula, materiais, vídeo externo e estudo dirigido imprimível.
+- `aula.html`: aula, vídeo externo, seções reflexivas, Referências e Estudo Dirigido imprimível.
 - `css/styles.css`: identidade visual, acessibilidade, responsividade e impressão.
 - `js/app.js`: busca, filtros, trilhas, questões e progresso.
-- `js/lesson.js`: conteúdo de aula, etapas, link externo de vídeo e impressão.
+- `js/lesson.js`: sequência de conteúdo da aula, etapas, vídeo, Referências e impressão.
 - `data/aulas.json`: arquivo único de aulas, trilhas, Questão da Semana e questões ENEM.
 - `manus-routes.json`: rotas públicas declaradas.
 
@@ -18,7 +18,7 @@ O arquivo **Editor offline — Trilha** é entregue separadamente. Guarde-o numa
 
 1. Baixe a versão mais recente de `data/aulas.json` em [professoriury/filotrilhas](https://github.com/professoriury/filotrilhas/tree/main/data). No GitHub, abra o arquivo e escolha **Download raw file** (ou **Raw** e depois guardar como `aulas.json`). Sempre comece pelo arquivo mais recente, para não apagar alterações de outra edição.
 2. Abra o arquivo HTML separado **Editor offline — Trilha** (o download desta entrega, fora do repositório e do site) no Chrome, Edge ou Firefox. Clique em **Abrir aulas.json** e selecione o arquivo baixado. O editor não precisa de servidor ou conexão.
-3. Na aba **Aulas**, selecione uma existente ou clique **Nova aula**. Preencha título, série(s), disciplina, tema, trilha, objetivo, resumo, conceitos, atividades, desafio, questões e materiais. Use uma linha por questão do estudo dirigido e uma linha por material. Para material com título, use `Rótulo | URL`. Os IDs devem continuar únicos.
+3. Na aba **Aulas**, selecione uma existente ou clique **Nova aula**. Preencha título, série(s), disciplina, tema, trilha, objetivo, resumo, conceitos, Recomendações POP, Atividade Reflexiva, pergunta complementar opcional e questões do Estudo Dirigido. Em Referências, use uma citação por linha ou `Rótulo | URL`; os links com URL devem ser HTTP/HTTPS ou caminhos relativos seguros. Os IDs devem continuar únicos. As três trilhas existentes correspondem a “Aprender a Filosofar”, “Pensadores(as) e Correntes” e “Temas Filosóficos”; seus IDs e vínculos devem ser preservados.
 4. Na aba **Trilhas**, crie ou edite a trilha e selecione as aulas associadas. O editor sincroniza a associação dos dois lados. Atualize a Questão da Semana e as questões ENEM nas respetivas abas; não marque como oficial algo cuja fonte não confirmou.
 5. Clique **Exportar aulas.json**. Se a validação apontar um erro, corrija o campo indicado e exporte novamente. Guarde o arquivo exportado e não feche a janela antes de exportar.
 6. No GitHub, abra `professoriury/filotrilhas`, entre em `data/aulas.json` e clique no lápis **Edit this file**. Substitua o conteúdo pelo conteúdo do arquivo exportado. Use **Commit changes** na branch `main`, com uma mensagem como `Atualiza conteúdos das aulas`. Isso grava a alteração no repositório; não use o editor público do site, pois essa área foi removida.

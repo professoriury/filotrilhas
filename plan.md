@@ -2,7 +2,7 @@
 
 ## Abordagem e arquitetura
 
-Manter o site de estudantes como aplicação estática de HTML, CSS e JavaScript nativos, sem servidor, base de dados, contas de estudantes ou APIs pagas. Remover da página pública a navegação e toda a interface de edição/exportação do professor; preservar busca, séries, trilhas, aulas, recuperação, questões e progresso local.
+Manter o site de estudantes como aplicação estática de HTML, CSS e JavaScript nativos, sem servidor, base de dados, contas de estudantes ou APIs pagas. Remover da página pública a navegação e toda a interface de edição/exportação do professor; preservar busca, séries, trilhas, aulas, questões e progresso local.
 
 Manter `data/aulas.json` como fonte de dados. Criar um editor como arquivo HTML autónomo fora da raiz e do repositório publicados. O professor abre-o localmente num navegador, carrega o JSON atual, edita aulas, trilhas, Questão da Semana e questões ENEM, valida referências/IDs/links e exporta um novo `aulas.json`. O editor não faz requisições de rede nem guarda credenciais, não envia dados e não publica sozinho.
 
@@ -33,3 +33,12 @@ Manter o caderno de campo digital já escolhido para o site dos estudantes: clar
 ## Limites
 
 O site continua público e estático; o editor separado protege a interface de edição de ficar exposta no site, mas não é um sistema autenticado nem sincroniza automaticamente com o GitHub. Para atualizar o conteúdo publicado, o professor precisa exportar e substituir o JSON no repositório. Não mudar a visibilidade do repositório, ligar Pages ou publicar sem pedido explícito.
+
+
+## Atualização aprovada — trilhas e estrutura das aulas
+
+Manter os três registros atuais de trilha, IDs e vínculos de aulas/séries; alterar somente os nomes para “Aprender a Filosofar”, “Pensadores(as) e Correntes” e “Temas Filosóficos”, atualizando descrições para refletir os novos eixos. Na página da aula, manter o objetivo de aprendizagem no topo e ordenar o conteúdo como: “Assistir Vídeo”, “Resumo do Conteúdo”, “Conceitos-chave”, “Recomendações POP”, “Atividade Reflexiva”, “Estudo Dirigido” e “Referências”. Retirar “Modo Recuperação” da navegação, do destaque da página inicial, das páginas de aula e do editor; a pedido explícito do usuário, apagar os campos e textos legados `recovery` do JSON, sem migrá-los para outra seção.
+
+Adicionar o campo `recommendations` ao conteúdo da aula e à edição offline. Manter `activity` como atividade principal e preservar o texto `challenge` já existente como uma pergunta complementar dentro do mesmo bloco reflexivo; o editor o apresenta como complementar opcional. O texto POP já registrado na primeira aula passa para `recommendations`. A relação entre atividade e recomendação é editorial/opcional, sem ligação técnica obrigatória.
+
+Reutilizar `materials` como dados de Referências, ampliando o editor offline para aceitar uma citação textual por linha ou `Rótulo | URL`; links continuam sujeitos à validação existente e citações sem URL são texto simples. O renderizador apresenta ambos sob “Referências”. Atualizar busca/validação para incluir recomendações e referências textuais. Manter arquitetura estática, rotas, progresso e demais recursos atuais. Atualizar README, `TODO.md`, `data/aulas.json`, `js/app.js`, `js/lesson.js` e o HTML autónomo do editor conforme necessário.
