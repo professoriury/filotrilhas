@@ -1,77 +1,240 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "lessons": [
     {
       "id": "perguntar-filosofia",
       "title": "O que significa filosofar?",
-      "grades": ["1º ano", "2º ano"],
+      "grades": [
+        "1º ano",
+        "2º ano"
+      ],
       "discipline": "Filosofia",
       "topic": "Introdução à Filosofia",
       "trackId": "comecar-a-perguntar",
       "objective": "Reconhecer a atitude filosófica como exercício de pergunta, análise e argumentação.",
-      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "video": {
+        "url": "",
+        "label": "Vídeo demonstrativo não publicado",
+        "published": false
+      },
       "summary": "Filosofar não é decorar respostas prontas. É observar o que parece óbvio, formular perguntas e construir razões para pensar sobre o mundo. Nesta aula, o ponto de partida é a própria atitude de perguntar.",
-      "keyConcepts": ["atitude filosófica", "problematização", "argumentação", "espanto"],
-      "recovery": "Escolha uma afirmação comum do cotidiano. Escreva duas perguntas que poderiam ajudar a examiná-la com mais cuidado.",
+      "keyConcepts": [
+        "atitude filosófica",
+        "problematização",
+        "argumentação",
+        "espanto"
+      ],
       "activity": "Em dupla ou individualmente, compare uma opinião e uma justificativa. Que razões sustentam cada uma? Registe a diferença entre afirmar e argumentar.",
-      "challenge": "Escreva uma pergunta filosófica sobre algo que você considera importante na escola ou na comunidade. Explique por que ela não se resolve com uma resposta de sim ou não.",
       "materials": [],
-      "studyQuestions": ["O que diferencia uma pergunta filosófica de uma pergunta factual?", "Como uma justificativa pode tornar uma opinião mais consistente?"],
-      "keywords": ["filosofar", "filosofia", "pergunta", "argumento", "atitude filosófica"],
+      "studyQuestions": [
+        "O que diferencia uma pergunta filosófica de uma pergunta factual?",
+        "Como uma justificativa pode tornar uma opinião mais consistente?"
+      ],
+      "keywords": [
+        "filosofar",
+        "filosofia",
+        "pergunta",
+        "argumento",
+        "atitude filosófica"
+      ],
       "status": "demo",
-      "updatedAt": "2026-10-21"
+      "updatedAt": "2026-10-21",
+      "recommendations": "Filmes, Séries e/ou Animes:\nMúsicas:",
+      "challenge": ""
     },
     {
       "id": "etica-e-escolhas",
       "title": "Ética: escolhas e convivência",
-      "grades": ["2º ano"],
+      "grades": [
+        "2º ano"
+      ],
       "discipline": "Filosofia",
       "topic": "Ética",
       "trackId": "escolhas-em-comum",
       "objective": "Analisar como valores e consequências participam de decisões éticas no cotidiano.",
-      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "video": {
+        "url": "",
+        "label": "Vídeo demonstrativo não publicado",
+        "published": false
+      },
       "summary": "A ética investiga como justificamos escolhas e como nossas ações afetam outras pessoas. Em vez de oferecer uma lista automática de respostas, ajuda a explicitar valores, deveres e consequências em situações de convivência.",
-      "keyConcepts": ["ética", "valor", "responsabilidade", "convivência"],
-      "recovery": "Retome uma situação cotidiana em que duas pessoas discordaram. Identifique os valores que podem estar em jogo para cada lado.",
+      "keyConcepts": [
+        "ética",
+        "valor",
+        "responsabilidade",
+        "convivência"
+      ],
       "activity": "Leia uma situação de decisão coletiva proposta pela turma. Registe quem é afetado, quais valores entram em conflito e que razões apoiam cada alternativa.",
       "challenge": "Escreva uma proposta de convivência para a turma e inclua uma justificativa que considere também quem poderia discordar dela.",
       "materials": [],
-      "studyQuestions": ["Por que uma escolha ética pode envolver conflito entre valores?", "Que diferença há entre dizer ‘eu prefiro’ e justificar uma decisão?"],
-      "keywords": ["ética", "escolha", "moral", "convivência", "responsabilidade", "valores"],
+      "studyQuestions": [
+        "Por que uma escolha ética pode envolver conflito entre valores?",
+        "Que diferença há entre dizer ‘eu prefiro’ e justificar uma decisão?"
+      ],
+      "keywords": [
+        "ética",
+        "escolha",
+        "moral",
+        "convivência",
+        "responsabilidade",
+        "valores"
+      ],
       "status": "demo",
-      "updatedAt": "2026-10-21"
+      "updatedAt": "2026-10-21",
+      "recommendations": ""
     },
     {
       "id": "conhecimento-e-verdade",
       "title": "Conhecimento, evidência e verdade",
-      "grades": ["3º ano"],
+      "grades": [
+        "3º ano"
+      ],
       "discipline": "Filosofia",
       "topic": "Teoria do conhecimento",
       "trackId": "como-sabemos",
       "objective": "Distinguir opinião, evidência e conhecimento e reconhecer a importância de justificar afirmações.",
-      "video": {"url": "", "label": "Vídeo demonstrativo não publicado", "published": false},
+      "video": {
+        "url": "",
+        "label": "Vídeo demonstrativo não publicado",
+        "published": false
+      },
       "summary": "Quando dizemos que sabemos algo, que tipo de razão apresentamos? A reflexão sobre o conhecimento examina fontes, evidências, critérios e limites das afirmações. Uma afirmação convincente ainda pode precisar de verificação.",
-      "keyConcepts": ["conhecimento", "evidência", "verdade", "justificação", "opinião"],
-      "recovery": "Escolha uma afirmação que circulou recentemente. Separe o que é afirmação, que evidência foi apresentada e o que ainda precisaria ser confirmado.",
+      "keyConcepts": [
+        "conhecimento",
+        "evidência",
+        "verdade",
+        "justificação",
+        "opinião"
+      ],
       "activity": "Compare duas explicações para o mesmo acontecimento. Para cada uma, anote a evidência usada, a origem da informação e uma pergunta que continua aberta.",
       "challenge": "Escreva um pequeno roteiro de três perguntas para verificar uma afirmação antes de compartilhá-la.",
       "materials": [],
-      "studyQuestions": ["Que diferença há entre uma opinião e uma afirmação justificada?", "Por que conhecer a fonte de uma informação importa?"],
-      "keywords": ["conhecimento", "verdade", "evidência", "opinião", "justificação", "filósofos"],
+      "studyQuestions": [
+        "Que diferença há entre uma opinião e uma afirmação justificada?",
+        "Por que conhecer a fonte de uma informação importa?"
+      ],
+      "keywords": [
+        "conhecimento",
+        "verdade",
+        "evidência",
+        "opinião",
+        "justificação",
+        "filósofos"
+      ],
       "status": "demo",
-      "updatedAt": "2026-10-21"
+      "updatedAt": "2026-10-21",
+      "recommendations": ""
+    },
+    {
+      "id": "aula-mvjty1r0-ozmy",
+      "title": "Nietzsche e suas Principais Ideias",
+      "grades": [
+        "2º ano"
+      ],
+      "discipline": "Filosofia",
+      "topic": "Filosofia Contemporânea",
+      "trackId": "escolhas-em-comum",
+      "objective": "Aprender sobre Friedrich Nietzsche",
+      "video": {
+        "url": "https://notebook.google.com/notebook/4d0f7c0f-0636-48f7-b7f5-f1bdc5ed3e7a/artifact/961f0848-9a3d-4810-8fde-97c4a327de9b?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_",
+        "label": "Nietzsche e sua História",
+        "published": true
+      },
+      "summary": "Friedrich Nietzsche (1844–1900) foi um dos filósofos mais provocadores da modernidade. Ele questionou os valores da moral tradicional, propôs a \"transvaloração de todos os valores\" e formulou conceitos como vontade de potência, eterno retorno e além-do-homem (Übermensch). Crítico da \"moral de rebanho\" e do niilismo, convida cada pessoa a criar seus próprios valores e a dizer \"sim\" à vida.",
+      "keyConcepts": [
+        "Transvaloração dos valores",
+        "Moral de senhores e de escravos",
+        "Morte de Deus"
+      ],
+      "recommendations": "Quando Nietzsche Chorou (2007)\nInterestelar (2014)\nNeon Genesis Evangelion",
+      "activity": "Em grupo, escolham uma regra moral que vocês seguem sem questionar (por exemplo, \"ser sempre educado\" ou \"seguir a carreira que a família espera\"). Apliquem o \"método da suspeita\" nietzschiano: de onde veio esse valor? Ele fortalece ou enfraquece a vida de quem o segue? Relacionem a atividade com as Recomendações POP: o que os personagens de Neon Genesis Evangelion ou o Raul Seixas de \"Zaratustra\" dizem sobre criar a própria caminhada?",
+      "challenge": "",
+      "studyQuestions": [
+        "O que Nietzsche quer dizer com a expressão \"Deus está morto\"?",
+        "Qual a diferença entre a moral de senhores e a moral de escravos?",
+        "O que significa a proposta de \"transvaloração de todos os valores\"?"
+      ],
+      "materials": [
+        {
+          "url": "",
+          "label": "NIETZSCHE, F. Assim Falou Zaratustra. São Paulo: Companhia das Letras, 2011."
+        },
+        {
+          "url": "",
+          "label": "NIETZSCHE, F. Genealogia da Moral. São Paulo: Companhia das Letras, 2009."
+        },
+        {
+          "url": "",
+          "label": "BNCC"
+        }
+      ],
+      "keywords": [
+        "Nietzsche",
+        "Filosofia contemporânea",
+        "Moral",
+        "Anticristo",
+        "Genealogia da Moral",
+        "Transvaloração dos valores",
+        "Moral de senhores e de escravos",
+        "Morte de Deus"
+      ],
+      "status": "published",
+      "updatedAt": "2026-10-22"
     }
   ],
   "tracks": [
-    {"id": "comecar-a-perguntar", "title": "Começar a perguntar", "discipline": "Filosofia", "grades": ["1º ano", "2º ano"], "description": "Um primeiro percurso sobre a atitude filosófica e a construção de argumentos.", "lessonIds": ["perguntar-filosofia"], "status": "demo"},
-    {"id": "escolhas-em-comum", "title": "Escolhas em comum", "discipline": "Filosofia", "grades": ["2º ano"], "description": "Investigue valores e razões que ajudam a pensar a vida coletiva.", "lessonIds": ["etica-e-escolhas"], "status": "demo"},
-    {"id": "como-sabemos", "title": "Como sabemos?", "discipline": "Filosofia", "grades": ["3º ano"], "description": "Um percurso para examinar evidências, justificativas e limites do conhecimento.", "lessonIds": ["conhecimento-e-verdade"], "status": "demo"}
+    {
+      "id": "comecar-a-perguntar",
+      "title": "Aprender a Filosofar",
+      "discipline": "Filosofia",
+      "grades": [
+        "1º ano",
+        "2º ano"
+      ],
+      "description": "Percursos para formular perguntas, analisar ideias e construir argumentos.",
+      "lessonIds": [
+        "perguntar-filosofia"
+      ],
+      "status": "demo"
+    },
+    {
+      "id": "escolhas-em-comum",
+      "title": "Pensadores(as) e Correntes",
+      "discipline": "Filosofia",
+      "grades": [
+        "2º ano"
+      ],
+      "description": "Percursos para conhecer pensadores, tradições e correntes filosóficas.",
+      "lessonIds": [
+        "etica-e-escolhas",
+        "aula-mvjty1r0-ozmy"
+      ],
+      "status": "demo"
+    },
+    {
+      "id": "como-sabemos",
+      "title": "Temas Filosóficos",
+      "discipline": "Filosofia",
+      "grades": [
+        "3º ano"
+      ],
+      "description": "Percursos para investigar temas, problemas e debates filosóficos.",
+      "lessonIds": [
+        "conhecimento-e-verdade"
+      ],
+      "status": "demo"
+    }
   ],
   "weeklyQuestion": {
     "id": "semana-demo-01",
     "prompt": "Uma estudante lê uma afirmação compartilhada em um grupo e decide verificar de onde veio a informação antes de repassá-la. Qual atitude está mais diretamente presente nessa decisão?",
-    "options": ["Aceitar a afirmação por ser popular", "Investigar razões e evidências antes de concluir", "Substituir a fonte por uma opinião pessoal", "Evitar qualquer pergunta sobre a informação"],
+    "options": [
+      "Aceitar a afirmação por ser popular",
+      "Investigar razões e evidências antes de concluir",
+      "Substituir a fonte por uma opinião pessoal",
+      "Evitar qualquer pergunta sobre a informação"
+    ],
     "correctIndex": 1,
     "explanation": "Verificar a origem e as evidências é uma forma de suspender a aceitação imediata e examinar as razões disponíveis. Isso não garante, por si só, uma conclusão definitiva, mas torna a análise mais cuidadosa.",
     "source": "Questão autoral fictícia para demonstração; não publicada e não oficial.",
@@ -85,15 +248,177 @@
       "discipline": "Filosofia",
       "topic": "Conhecimento e evidência",
       "prompt": "Ao comparar duas explicações para um mesmo fato, uma turma decide observar quais evidências sustentam cada uma e quais dúvidas permanecem. Essa prática se aproxima de uma atitude de:",
-      "options": ["investigação crítica das justificativas", "aceitação automática da primeira explicação", "abandono de qualquer critério de análise", "substituição de evidência por popularidade"],
+      "options": [
+        "investigação crítica das justificativas",
+        "aceitação automática da primeira explicação",
+        "abandono de qualquer critério de análise",
+        "substituição de evidência por popularidade"
+      ],
       "correctIndex": 0,
       "explanation": "Examinar evidências e reconhecer dúvidas remanescentes caracteriza uma investigação crítica, sem confundir confiança inicial com comprovação.",
-      "analysis": ["Correta: considera evidências e examina justificativas.", "Não há aceitação automática no enunciado.", "A turma está usando critérios de análise, não os abandonando.", "Popularidade não é apresentada como evidência."],
+      "analysis": [
+        "Correta: considera evidências e examina justificativas.",
+        "Não há aceitação automática no enunciado.",
+        "A turma está usando critérios de análise, não os abandonando.",
+        "Popularidade não é apresentada como evidência."
+      ],
       "source": "Questão autoral fictícia para demonstração; não publicada e não oficial.",
       "provenance": "autoral",
       "status": "demo"
+    },
+    {
+      "id": "enem-2020-digital-azul-q47",
+      "year": 2020,
+      "application": "Aplicação digital — 1º dia — Caderno 1 — Azul (Inglês)",
+      "discipline": "Filosofia",
+      "topic": "Filosofia medieval; liberdade e presciência divina",
+      "prompt": "Essa discussão, proposta pelo filósofo Agostinho de Hipona (354-430), indica que a liberdade humana apresenta uma",
+      "options": [
+        "natureza condicionada.",
+        "competência absoluta.",
+        "aplicação subsidiária.",
+        "utilização facultativa.",
+        "autonomia irrestrita."
+      ],
+      "correctIndex": 0,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2020, questão 47 (Aplicação digital, 1º dia, Caderno 1, Azul (Inglês)). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_PV_digital_D1_CD1_ingles.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_GB_digital_D1_CD1_ingles.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2020.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2020-digital-azul-q57",
+      "year": 2020,
+      "application": "Aplicação digital — 1º dia — Caderno 1 — Azul (Inglês)",
+      "discipline": "Filosofia",
+      "topic": "Ética kantiana; universalidade do dever",
+      "prompt": "Princípios práticos são subjetivos, ou máximas, quando a condição é considerada pelo sujeito como verdadeira só para a sua vontade; são, por outro lado, objetivos, quando a condição é válida para a vontade de todo ser natural.\n\nKANT, I. Crítica da razão prática. Lisboa: Edições 70, 2008.\n\nA concepção ética presente no texto defende a",
+      "options": [
+        "universalidade do dever.",
+        "maximização da utilidade.",
+        "aprovação pelo sentimento.",
+        "identificação da justa medida.",
+        "obediência à determinação divina."
+      ],
+      "correctIndex": 0,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2020, questão 57 (Aplicação digital, 1º dia, Caderno 1, Azul (Inglês)). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_PV_digital_D1_CD1_ingles.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_GB_digital_D1_CD1_ingles.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2020.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2020-digital-azul-q76",
+      "year": 2020,
+      "application": "Aplicação digital — 1º dia — Caderno 1 — Azul (Inglês)",
+      "discipline": "Filosofia",
+      "topic": "Ética socrática; virtude e conhecimento",
+      "prompt": "Há um tempo, belas e boas são todas as ações justas e virtuosas. Os que as conhecem nada podem preferir-lhes. Os que não as conhecem, não somente não podem praticá-las como, se o tentam, só cometem erros. Assim praticam os sábios atos belos e bons, enquanto os que não o são só podem descambar em faltas. E se nada se faz justo, belo e bom que não pela virtude, claro é que na sabedoria se resumem a justiça e todas as mais virtudes.\n\nXENOFONTE. Ditos e feitos memoráveis de Sócrates. Apud CHALITA, G. Vivendo a filosofia. São Paulo: Ática, 2005.\n\nAo fazer referência ao conteúdo moral da filosofia socrática narrada por Xenofonte, o texto indica que a vida virtuosa está associada à",
+      "options": [
+        "aceitação do sofrimento como gênese da felicidade suprema.",
+        "moderação dos prazeres com vistas à serenidade da alma.",
+        "contemplação da physis como fonte de conhecimento.",
+        "satisfação dos desejos com o objetivo de evitar a melancolia.",
+        "persecução da verdade como forma de agir corretamente."
+      ],
+      "correctIndex": 4,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2020, questão 76 (Aplicação digital, 1º dia, Caderno 1, Azul (Inglês)). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_PV_digital_D1_CD1_ingles.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_GB_digital_D1_CD1_ingles.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2020.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2020-reaplicacao-ppl-azul-q73",
+      "year": 2020,
+      "application": "Reaplicação/PPL (segunda aplicação) — 1º dia — Caderno 1 — Azul",
+      "discipline": "Filosofia",
+      "topic": "Antropologia filosófica; crítica da concepção metafísica de humanidade",
+      "prompt": "A humanidade, a humanidade do homem, ainda é um conceito completamente novo para o filósofo que não cochila em pé. A velha questão do próprio homem continua por ser inteiramente reelaborada, não apenas em relação às ciências do vivo, não apenas em relação ao que se nomeia com essa palavra geral, homogênea e confusa, o animal, mas em relação a todos os traços que a metafísica reservou ao homem e que nenhum deles resiste à análise.\n\nDERRIDA, J. Papel-máquina. São Paulo: Estação Liberdade, 2004.\n\nNo trecho, caracteriza-se o seguinte tema fundamental do pensamento filosófico contemporâneo:",
+      "options": [
+        "Crise do sujeito.",
+        "Relativismo ético.",
+        "Virada linguística.",
+        "Teoria da referência.",
+        "Crítica à tecnociência."
+      ],
+      "correctIndex": 0,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2020, questão 73 (Reaplicação/PPL (segunda aplicação), 1º dia, Caderno 1, Azul). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_PV_reaplicacao_PPL_D1_CD1.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_GB_reaplicacao_PPL_D1_CD1.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2020.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2020-reaplicacao-ppl-azul-q89",
+      "year": 2020,
+      "application": "Reaplicação/PPL (segunda aplicação) — 1º dia — Caderno 1 — Azul",
+      "discipline": "Filosofia",
+      "topic": "Filosofia política; Rousseau e estado de natureza",
+      "prompt": "Antes que a arte polisse nossas maneiras e ensinasse nossas paixões a falarem a linguagem apurada, nossos costumes eram rústicos. Não era melhor, mas os homens encontravam sua segurança na facilidade para se reconhecerem reciprocamente, e essa vantagem, de cujo valor não temos mais a noção, poupava-lhes muitos vícios.\n\nROUSSEAU, J.-J. Discurso sobre as ciências e as artes. São Paulo: Abril Cultural, 1983 (adaptado).\n\nNo presente excerto, o filósofo Jean-Jacques Rousseau (1712-1778) exalta uma condição que teria sido vivenciada pelo homem em qual situação?",
+      "options": [
+        "No sistema monástico, pela valorização da religião.",
+        "Na existência em comunidade, pela comunhão de valores.",
+        "No modelo de autogestão, pela emancipação do sujeito.",
+        "No estado de natureza, pelo exercício da liberdade.",
+        "Na vida em sociedade, pela abundância de bens."
+      ],
+      "correctIndex": 3,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2020, questão 89 (Reaplicação/PPL (segunda aplicação), 1º dia, Caderno 1, Azul). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_PV_reaplicacao_PPL_D1_CD1.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2020_GB_reaplicacao_PPL_D1_CD1.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2020.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2025-regular-d1-c1-q48",
+      "year": 2025,
+      "application": "Aplicação regular — 1º dia — Caderno 1 — Azul",
+      "discipline": "Filosofia",
+      "topic": "Retórica, persuasão e crítica platônica aos sofistas",
+      "prompt": "A credulidade dos ouvintes aumenta o descaramento do narrador, e o descaramento deste conquista-lhes a credulidade. A eloquência, quando levada a seu patamar mais alto, deixa pouco lugar à razão ou à reflexão, mas, dirigindo-se inteiramente à imaginação e aos afetos, cativa os ouvintes condescendentes e subjuga-lhes o entendimento.\n\nHUME, D. Uma investigação sobre o entendimento humano e sobre os princípios da moral. São Paulo: Edunesp, 2003.\n\nNo contexto do século XVIII, o autor propõe uma reflexão radical acerca da arte da eloquência, restringindo-a ao",
+      "options": [
+        "sistema de crenças, conforme a proposta kantiana de objetividade do conhecimento.",
+        "campo dos absolutos, semelhante ao entendimento medieval dos Universais.",
+        "domínio da lógica, consoante a compreensão aristotélica nos Analíticos.",
+        "paradigma da racionalidade, alinhado ao modelo cartesiano de método.",
+        "âmbito da persuasão, análogo às críticas platônicas aos sofistas."
+      ],
+      "correctIndex": 4,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2025, questão 48 (Aplicação regular, 1º dia, Caderno 1, Azul). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2025_PV_impresso_D1_CD1.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2025_GB_impresso_D1_CD1.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2025.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
+    },
+    {
+      "id": "enem-2025-regular-d1-c1-q82",
+      "year": 2025,
+      "application": "Aplicação regular — 1º dia — Caderno 1 — Azul",
+      "discipline": "Filosofia",
+      "topic": "Filosofia política de Platão; justiça e exercício do poder",
+      "prompt": "A cidade justa é governada pelos filósofos, administrada pelos cientistas, protegida pelos guerreiros e mantida pelos produtores. Cada classe cumprirá sua função para o bem da pólis, racionalmente dirigida pelos filósofos. Em contrapartida, a cidade injusta é aquela onde o governo está nas mãos dos proprietários — que não pensam no bem comum da pólis e lutarão por interesses econômicos particulares.\n\nCHAUÍ, M. Convite à filosofia. São Paulo: Ática, 2000.\n\nO texto apresenta a estrutura de governo da cidade ideal pensada por Platão, que postula uma indissociabilidade entre",
+      "options": [
+        "cognoscência e relação intersubjetiva.",
+        "mitologia e teorias cosmogônicas.",
+        "cidadania e primazia da retórica.",
+        "moralidade e virtudes cardeais.",
+        "ética e exercício do poder."
+      ],
+      "correctIndex": 4,
+      "explanation": "",
+      "analysis": [],
+      "source": "INEP — ENEM 2025, questão 82 (Aplicação regular, 1º dia, Caderno 1, Azul). Caderno: https://download.inep.gov.br/enem/provas_e_gabaritos/2025_PV_impresso_D1_CD1.pdf; Gabarito: https://download.inep.gov.br/enem/provas_e_gabaritos/2025_GB_impresso_D1_CD1.pdf; Página INEP: https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos/2025.",
+      "provenance": "oficial",
+      "status": "published",
+      "sourceVerified": true
     }
   ]
-}
-
 }
