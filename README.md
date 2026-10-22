@@ -19,9 +19,10 @@ O arquivo **Editor offline — Trilha** é entregue separadamente. Guarde-o numa
 1. Baixe a versão mais recente de `data/aulas.json` em [professoriury/filotrilhas](https://github.com/professoriury/filotrilhas/tree/main/data). No GitHub, abra o arquivo e escolha **Download raw file** (ou **Raw** e depois guardar como `aulas.json`). Sempre comece pelo arquivo mais recente, para não apagar alterações de outra edição.
 2. Abra o arquivo HTML separado **Editor offline — Trilha** (o download desta entrega, fora do repositório e do site) no Chrome, Edge ou Firefox. Clique em **Abrir aulas.json** e selecione o arquivo baixado. O editor não precisa de servidor ou conexão.
 3. Na aba **Aulas**, selecione uma existente ou clique **Nova aula**. Preencha título, série(s), disciplina, tema, trilha, objetivo, resumo, conceitos, Recomendações POP, Atividade Reflexiva, pergunta complementar opcional e questões do Estudo Dirigido. Em Referências, use uma citação por linha ou `Rótulo | URL`; os links com URL devem ser HTTP/HTTPS ou caminhos relativos seguros. Os IDs devem continuar únicos. As três trilhas existentes correspondem a “Aprender a Filosofar”, “Pensadores(as) e Correntes” e “Temas Filosóficos”; seus IDs e vínculos devem ser preservados.
-4. Na aba **Trilhas**, crie ou edite a trilha e selecione as aulas associadas. O editor sincroniza a associação dos dois lados. Atualize a Questão da Semana e as questões ENEM nas respetivas abas; não marque como oficial algo cuja fonte não confirmou.
-5. Clique **Exportar aulas.json**. Se a validação apontar um erro, corrija o campo indicado e exporte novamente. Guarde o arquivo exportado e não feche a janela antes de exportar.
-6. No GitHub, abra `professoriury/filotrilhas`, entre em `data/aulas.json` e clique no lápis **Edit this file**. Substitua o conteúdo pelo conteúdo do arquivo exportado. Use **Commit changes** na branch `main`, com uma mensagem como `Atualiza conteúdos das aulas`. Isso grava a alteração no repositório; não use o editor público do site, pois essa área foi removida.
+4. Na aba **Trilhas**, crie ou edite a trilha e selecione as aulas associadas. O editor sincroniza a associação dos dois lados. Atualize a Questão da Semana e as questões ENEM nas respetivas abas. Para cada questão ENEM declarada oficial, identifique no campo **Fonte** o INEP ou um domínio HTTPS `gov.br`, o ano e o número exato do item, com links para o caderno e o gabarito da mesma aplicação. Marque **Conferência manual** somente depois de comparar ambos os documentos. Uma questão oficial não pode ser publicada sem essa marca. Itens ainda não verificados devem permanecer como rascunho.
+5. Para um item oficialmente anulado, selecione proveniência **Declarada oficial**, estado **Anulada pelo INEP**, confirme a fonte e deixe sem alternativa correta. O editor guarda `correctIndex: null`; na página dos estudantes, as opções ficam desativadas e não há correção automática. Não use a marcação de anulação com base em fontes secundárias.
+6. Clique **Exportar aulas.json**. Se a validação apontar um erro, corrija o campo indicado e exporte novamente. Guarde o arquivo exportado e não feche a janela antes de exportar.
+7. No GitHub, abra `professoriury/filotrilhas`, entre em `data/aulas.json` e clique no lápis **Edit this file**. Substitua o conteúdo pelo conteúdo do arquivo exportado. Use **Commit changes** na branch `main`, com uma mensagem como `Atualiza conteúdos das aulas`. Isso grava a alteração no repositório; não use o editor público do site, pois essa área foi removida.
 
 ## Publicar no GitHub Pages
 
@@ -43,4 +44,21 @@ Como alternativa, o NotebookLM permite descarregar o vídeo. Pode colocar o fich
 
 O editor offline trabalha numa cópia carregada manualmente. Guardar dados no editor não atualiza o repositório: é preciso exportar o JSON e fazer commit em `main`. O site usa `localStorage` para guardar o progresso no dispositivo do aluno; esse progresso não se sincroniza entre aparelhos e pode ser perdido quando os dados do navegador são limpos. Não há contas de estudante, ranking público ou recolha de nomes/notas. O site e os links do Pages são públicos; não armazene neles dados que precisem de acesso restrito.
 
-As questões declaradas oficiais continuam sendo informação fornecida pelo professor, não verificada automaticamente. Para ENEM, a referência deve indicar INEP ou um domínio HTTPS `gov.br`, ENEM, ano e número da questão/item; confirme a fonte no documento oficial antes de publicar.
+O site valida o formato e o domínio das referências, mas não baixa nem audita os PDFs. Para declarar oficial uma questão ENEM, o campo **Fonte** deve identificar ENEM, ano e número do item e conter dois links HTTPS distintos em domínios `gov.br`, rotulados **Caderno** e **Gabarito** da mesma aplicação. O editor só permite publicar depois que alguém comparar os documentos oficiais e assinalar **Conferência manual**; alterações posteriores nos campos críticos removem essa marca.
+
+
+## Curadoria e atualização das questões ENEM
+
+O escopo previsto da curadoria histórica é 2020–2025, incluindo aplicações regulares, PPL, reaplicações e aplicações extras; o banco publicado agora é parcial, conforme o estado descrito abaixo. Filosofia é uma classificação pedagógica da plataforma, não uma classificação oficial do INEP. Cada registro deve indicar a aplicação, dia e caderno/cor no campo **Aplicação**, além do número exato da questão e links oficiais para o caderno e o gabarito da mesma aplicação no campo **Fonte**. Cadernos coloridos que apenas reordenam os mesmos itens não devem gerar duplicações. Questões que não puderem ser confirmadas nos documentos oficiais ficam fora da lista publicada.
+
+A marca **Conferência manual** é uma declaração do professor depois da comparação dos documentos; o site não baixa nem audita os PDFs automaticamente. Se o ano, aplicação, enunciado, alternativas, gabarito, fonte, proveniência ou estado forem editados depois, o editor limpa a marca para exigir nova conferência. A partir de 2026, acrescente novas questões manualmente no editor offline, começando pelo arquivo `aulas.json` mais recente.
+
+
+### Estado atual da cobertura ENEM
+
+A versão atual inclui sete questões oficialmente verificadas: três da aplicação digital de 2020, duas da Reaplicação/PPL de 2020 e duas da aplicação regular de 2025 — todas do 1º dia e Caderno 1 Azul. Não foram incluídos itens dos anos 2021–2024 nem das demais aplicações de 2020 e 2025. A ausência de uma edição no banco não significa que ela não tenha questões de Filosofia; significa apenas que elas ainda não foram incluídas após conferência do enunciado, alternativas e gabarito oficiais. A partir de 2026, novas questões devem ser acrescentadas manualmente pelo editor offline.
+
+
+### Estados rascunho e visibilidade
+
+A interface do estudante não mostra aulas/trilhas em `draft`, questões ENEM em rascunho nem itens oficiais sem conferência manual. Porém o site é estático: se um registro de rascunho estiver dentro do `data/aulas.json` publicado, qualquer pessoa pode descarregar esse JSON. O status controla a interface, não concede privacidade; mantenha conteúdo confidencial fora do arquivo público.

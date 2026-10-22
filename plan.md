@@ -42,3 +42,28 @@ Manter os três registros atuais de trilha, IDs e vínculos de aulas/séries; al
 Adicionar o campo `recommendations` ao conteúdo da aula e à edição offline. Manter `activity` como atividade principal e preservar o texto `challenge` já existente como uma pergunta complementar dentro do mesmo bloco reflexivo; o editor o apresenta como complementar opcional. O texto POP já registrado na primeira aula passa para `recommendations`. A relação entre atividade e recomendação é editorial/opcional, sem ligação técnica obrigatória.
 
 Reutilizar `materials` como dados de Referências, ampliando o editor offline para aceitar uma citação textual por linha ou `Rótulo | URL`; links continuam sujeitos à validação existente e citações sem URL são texto simples. O renderizador apresenta ambos sob “Referências”. Atualizar busca/validação para incluir recomendações e referências textuais. Manter arquitetura estática, rotas, progresso e demais recursos atuais. Atualizar README, `TODO.md`, `data/aulas.json`, `js/app.js`, `js/lesson.js` e o HTML autónomo do editor conforme necessário.
+
+
+## Curadoria histórica do ENEM (2020–2025)
+
+Incluir todas as edições de 2020 a 2025 e todas as aplicações oficiais disponíveis por edição: regular, PPL, reaplicações e aplicações extras. Usar um caderno padrão por aplicação para evitar duplicar as versões de cor que reorganizam o mesmo conteúdo; preservar no registro o dia, a aplicação, o caderno/cor e o número exato da questão. Classificar como Filosofia, por decisão pedagógica da Trilha, somente itens com conteúdo filosófico claro; não atribuir essa etiqueta ao INEP. Copiar enunciado e alternativas com fidelidade e validar o gabarito no arquivo oficial correspondente. `application` deve identificar a aplicação/dia/caderno; `source` deve citar INEP/ENEM/ano/número e incluir URL oficial da prova e do gabarito. Questões com imagem/gráfico devem manter a referência ao PDF oficial, sem inventar nem substituir o estímulo visual. Itens sem prova e gabarito oficiais verificáveis ficam fora da lista confirmada e são relatados como pendentes. Guardar os resultados intermediários de pesquisa fora do repositório; integrar somente registros verificados em `data/aulas.json`, com IDs únicos, `provenance: oficial` e status apropriado.
+
+
+## Interação de resposta às questões ENEM
+
+Reutilizar os botões de alternativas já existentes em `js/app.js`, que hoje dão feedback visual genérico. Tornar a alternativa selecionada identificável por estado acessível (`aria-pressed` e grupo rotulado), informar explicitamente se a resposta escolhida está correta ou incorreta e, no erro, destacar também a alternativa correta. Preservar filtros, comentário/análise e o funcionamento estático local; não exigir conta nem enviar respostas para servidor.
+
+
+## Conferência e estado das questões ENEM
+
+O campo `source` deve identificar ENEM, ano, número do item e referências oficiais da prova e do gabarito. O editor offline permite assinalar `sourceVerified` como confirmação manual do professor, não como auditoria automática do site. Alterações de ano, aplicação, enunciado, alternativas, gabarito, fonte, proveniência ou estado limpam a marca e exigem nova conferência. Uma questão oficial só pode ter estado `published` com a marca presente; rascunhos oficiais permanecem fora da página do estudante.
+
+Uma questão anulada deve ter proveniência `oficial`, fonte conferida, estado `annulled` e `correctIndex: null`. O campo de alternativa correta é desativado no editor. No site, as opções são mostradas sem seleção ou correção automática e a anulação é indicada explicitamente. Fontes HTTPS em domínios `gov.br` são apresentadas como links seguros em nova aba. O feedback de resposta anuncia de modo explícito acerto/erro e destaca a resposta correta quando a escolha está errada, sem conta, persistência de resposta ou envio para servidor.
+
+
+O contrato de fonte oficial foi endurecido: prova/caderno e gabarito exigem dois URLs HTTPS distintos em domínios `gov.br`, rotulados no campo `source`; uma menção textual a INEP ou um único URL não bastam. A validação de domínio/formato é local; `sourceVerified` continua sendo uma conferência humana explícita, não uma auditoria automatizada dos PDFs.
+
+
+### Estados de publicação visíveis ao estudante
+
+O frontend exclui aulas e trilhas `draft` das séries, busca, recentes, trilhas, progresso e da resolução direta de `aula.html`; um cartão de aula não revela o título de uma trilha rascunho. Questões ENEM `draft` e todas as questões `oficial` com `sourceVerified` diferente de `true` são omitidas dos filtros e da listagem, mesmo se o estado for `demo`. O editor só deixa guardar uma questão oficial não conferida como `draft`. Como todos os arquivos publicados por GitHub Pages são públicos, `draft` significa “oculto na interface”, não “privado”; o professor não deve colocar informação confidencial no JSON publicado.

@@ -79,9 +79,9 @@
       const response = await fetch(new URL('data/aulas.json', document.baseURI));
       if (!response.ok) throw new Error('Não foi possível carregar o arquivo de aulas.');
       const data = await response.json();
-      const lesson = (data.lessons || []).find(item => item.id === id);
+      const lesson = (data.lessons || []).find(item => item.id === id && item.status !== 'draft');
       if (!lesson) throw new Error('A aula solicitada não foi encontrada.');
-      render(lesson, data.tracks || []);
+      render(lesson, (data.tracks || []).filter(track => track.status !== 'draft'));
     } catch (error) {
       $('#lesson-content').innerHTML = `<section class="lesson-error"><span class="eyebrow">CONTEÚDO INDISPONÍVEL</span><h1>Não encontramos esta aula.</h1><p>${escapeHtml(error.message)}</p><a class="button button-dark" href="./">Voltar ao início</a></section>`;
     }
