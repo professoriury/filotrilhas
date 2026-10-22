@@ -13,6 +13,8 @@
   };
   let data;
   let progress = readProgress();
+  let enemIndex = 0;
+  const enemAnswers = new Map();
 
   function readProgress() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
@@ -169,27 +171,63 @@
   function renderEnem() {
     const filters = {year:$('#enem-year').value, application:$('#enem-application').value, discipline:$('#enem-subject').value, topic:$('#enem-topic').value};
     const questions = studentVisibleQuestions().filter(item => Object.entries(filters).every(([key,value]) => !value || String(item[key]) === value));
-    $('#enem-questions').innerHTML = questions.length ? questions.map((question, index) => {
-      const prefix = `enem-${index}`;
-      const provenance = question.provenance === 'oficial' ? (question.sourceVerified ? 'QUESTÃO OFICIAL · FONTE CONFERIDA' : 'QUESTÃO OFICIAL · FONTE A CONFERIR') : 'AUTORAL · DEMONSTRAÇÃO';
-      const year = question.year || 'Sem ano oficial';
-      const answerable = question.status !== 'annulled' && Number.isInteger(question.correctIndex) && question.correctIndex >= 0 && question.correctIndex < (question.options || []).length;
-      const options = (question.options || []).map((option, i) => `<button type="button" class="option-button" data-enem-id="${escapeHtml(question.id)}" data-index="${i}" aria-pressed="false" aria-describedby="feedback-${prefix}"${answerable ? '' : ' disabled aria-disabled="true"'}><span class="option-letter">${String.fromCharCode(65+i)}.</span><span>${escapeHtml(option)}</span></button>`).join('');
-      const analysis = question.analysis?.length ? `<ul class="question-analysis">${question.analysis.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>` : '';
-      const unavailableFeedback = question.status === 'annulled' ? 'Questão anulada oficialmente; não há alternativa correta para conferir.' : 'Gabarito não confirmado; esta questão não permite correção automática.';
-      const initialFeedback = answerable ? '' : unavailableFeedback;
-      const sourceNote = question.provenance === 'oficial' ? (question.sourceVerified ? 'Fonte conferida no material oficial.' : 'Fonte indicada; ainda não conferida.') : 'Questão autoral de demonstração.';
-      return `<article class="question-item"><div class="lesson-meta"><span class="pill">${escapeHtml(question.status === 'annulled' ? 'ANULADA PELO INEP' : provenance)}</span><span class="pill">${escapeHtml(String(year))}</span><span class="pill">${escapeHtml(question.application || 'Aplicação não informada')}</span></div><h3>${escapeHtml(question.discipline)} · ${escapeHtml(question.topic)}</h3><p class="question-prompt" id="prompt-${prefix}">${escapeHtml(question.prompt)}</p><div class="options-list" role="group" aria-labelledby="prompt-${prefix}">${options}</div><p class="answer-feedback" id="feedback-${prefix}" role="status" aria-live="polite" aria-atomic="true">${escapeHtml(initialFeedback)}</p><details><summary>Ver comentário e análise</summary><p>${escapeHtml(question.explanation || '')}</p>${analysis}</details><p class="question-source"><strong>Fonte:</strong> ${sourceMarkup(question.source || 'Não informada')} <span>${escapeHtml(sourceNote)}</span></p></article>`;
-    }).join('') : '<div class="empty-state">Nenhuma questão corresponde aos filtros atuais.</div>';
-    $$('#enem-questions .option-button[data-enem-id]:not(:disabled)').forEach(button => button.addEventListener('click', () => {
+    const container = $('#enem-questions');
+    if (!questions.length) {
+      enemIndex = 0;
+      container.innerHTML = '<div class="empty-state">Nenhuma questão corresponde aos filtros atuais.</div>';
+      return;
+    }
+    enemIndex = Math.min(enemIndex, questions.length - 1);
+    const question = questions[enemIndex];
+    const prefix = 'enem-current';
+    const provenance = question.provenance === 'oficial' ? (question.sourceVerified ? 'QUESTÃO OFICIAL · FONTE CONFERIDA' : 'QUESTÃO OFICIAL · FONTE A CONFERIR') : 'AUTORAL · DEMONSTRAÇÃO';
+    const year = question.year || 'Sem ano oficial';
+    const correctIndex = Number(question.correctIndex);
+    const answerable = question.status !== 'annulled' && Number.isInteger(question.correctIndex) && correctIndex >= 0 && correctIndex < (question.options || []).length;
+    const selectedIndex = enemAnswers.get(question.id);
+    const hasSavedAnswer = answerable && Number.isInteger(selectedIndex);
+    const isSavedCorrect = hasSavedAnswer && selectedIndex === correctIndex;
+    const selectedLetter = hasSavedAnswer ? String.fromCharCode(65 + selectedIndex) : '';
+    const correctLetter = answerable ? String.fromCharCode(65 + correctIndex) : '';
+    const explanation = question.explanation ? ` ${question.explanation}` : '';
+    const feedbackText = hasSavedAnswer
+      ? (isSavedCorrect ? `Alternativa ${selectedLetter}: correta.${explanation}` : `Alternativa ${selectedLetter}: incorreta. A alternativa correta é ${correctLetter}.${explanation}`)
+      : question.status === 'annulled' ? 'Questão anulada oficialmente; não há alternativa correta para conferir.' : answerable ? '' : 'Gabarito não confirmado; esta questão não permite correção automática.';
+    const options = (question.options || []).map((option, i) => {
+      let state = '';
+      if (hasSavedAnswer && i === selectedIndex) state = isSavedCorrect ? 'correct' : 'incorrect';
+      else if (hasSavedAnswer && !isSavedCorrect && i === correctIndex) state = 'correct';
+      return `<button type="button" class="option-button${state ? ` ${state}` : ''}" data-enem-id="${escapeHtml(question.id)}" data-index="${i}" aria-pressed="${hasSavedAnswer && i === selectedIndex}" aria-describedby="feedback-${prefix}"${answerable ? '' : ' disabled aria-disabled="true"'}><span class="option-letter">${String.fromCharCode(65+i)}.</span><span>${escapeHtml(option)}</span></button>`;
+    }).join('');
+    const analysis = question.analysis?.length ? `<ul class="question-analysis">${question.analysis.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>` : '';
+    const sourceNote = question.provenance === 'oficial' ? (question.sourceVerified ? 'Fonte conferida no material oficial.' : 'Fonte indicada; ainda não conferida.') : 'Questão autoral de demonstração.';
+    const feedbackClass = hasSavedAnswer ? `answer-feedback ${isSavedCorrect ? 'correct' : 'incorrect'}` : 'answer-feedback';
+    const navigation = `<nav class="enem-question-navigation" aria-label="Navegação das questões ENEM"><button type="button" class="enem-nav-button" data-enem-nav="previous" aria-label="Questão anterior"${enemIndex === 0 ? ' disabled' : ''}><span aria-hidden="true">←</span><span>Anterior</span></button><p class="enem-question-count" role="status" aria-live="polite" aria-atomic="true">Questão ${enemIndex + 1} de ${questions.length}</p><button type="button" class="enem-nav-button" data-enem-nav="next" aria-label="Próxima questão"${enemIndex === questions.length - 1 ? ' disabled' : ''}><span>Próxima</span><span aria-hidden="true">→</span></button></nav>`;
+    container.innerHTML = `${navigation}<article class="question-item"><div class="lesson-meta"><span class="pill">${escapeHtml(question.status === 'annulled' ? 'ANULADA PELO INEP' : provenance)}</span><span class="pill">${escapeHtml(String(year))}</span><span class="pill">${escapeHtml(question.application || 'Aplicação não informada')}</span></div><h3>${escapeHtml(question.discipline)} · ${escapeHtml(question.topic)}</h3><p class="question-prompt" id="prompt-${prefix}">${escapeHtml(question.prompt)}</p><div class="options-list" role="group" aria-labelledby="prompt-${prefix}">${options}</div><p class="${feedbackClass}" id="feedback-${prefix}" role="status" aria-live="polite" aria-atomic="true">${escapeHtml(feedbackText)}</p><details><summary>Ver comentário e análise</summary><p>${escapeHtml(question.explanation || '')}</p>${analysis}</details><p class="question-source"><strong>Fonte:</strong> ${sourceMarkup(question.source || 'Não informada')} <span>${escapeHtml(sourceNote)}</span></p></article>`;
+  }
+  function initEnemEvents() {
+    const container = $('#enem-questions');
+    container.addEventListener('click', event => {
+      const navigation = event.target.closest('[data-enem-nav]');
+      if (navigation && !navigation.disabled) {
+        const action = navigation.dataset.enemNav;
+        enemIndex += action === 'next' ? 1 : -1;
+        renderEnem();
+        const preferred = container.querySelector(`[data-enem-nav="${action}"]`);
+        const fallback = container.querySelector(action === 'next' ? '[data-enem-nav="previous"]' : '[data-enem-nav="next"]');
+        (preferred && !preferred.disabled ? preferred : fallback)?.focus({preventScroll:true});
+        return;
+      }
+      const button = event.target.closest('.option-button[data-enem-id]:not(:disabled)');
+      if (!button) return;
       const question = (data.enemQuestions || []).find(item => item.id === button.dataset.enemId);
       if (!question) return;
       const correct = Number(question.correctIndex);
       const selected = Number(button.dataset.index);
+      enemAnswers.set(question.id, selected);
       const card = button.closest('.question-item');
       const choices = [...card.querySelectorAll('.option-button')];
       choices.forEach(item => { item.classList.remove('correct','incorrect'); item.setAttribute('aria-pressed','false'); });
-      card.querySelector('.answer-feedback').classList.remove('correct','incorrect');
       button.setAttribute('aria-pressed','true');
       button.classList.add(selected === correct ? 'correct' : 'incorrect');
       const correctLetter = String.fromCharCode(65 + correct);
@@ -197,11 +235,12 @@
       if (selected !== correct && choices[correct]) choices[correct].classList.add('correct');
       const feedback = card.querySelector('.answer-feedback');
       const isCorrect = selected === correct;
-      feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `answer-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
       feedback.textContent = isCorrect
         ? `Alternativa ${selectedLetter}: correta.${question.explanation ? ' ' + question.explanation : ''}`
         : `Alternativa ${selectedLetter}: incorreta. A alternativa correta é ${correctLetter}.${question.explanation ? ' ' + question.explanation : ''}`;
-    }));
+    });
+    ['#enem-year','#enem-application','#enem-subject','#enem-topic'].forEach(selector => $(selector).addEventListener('change', () => { enemIndex = 0; renderEnem(); }));
   }
   function identifiedSource(value, yearValue = null) {
     const source = String(value || '').trim();
@@ -283,8 +322,7 @@
       data = await response.json();
       const validationError = validateData(data);
       if (validationError) throw new Error(`O arquivo data/aulas.json tem dados inválidos: ${validationError}`);
-      initSearchEvents(); initNav(); refreshApp();
-      ['#enem-year','#enem-application','#enem-subject','#enem-topic'].forEach(selector => $(selector).addEventListener('change', renderEnem));
+      initSearchEvents(); initNav(); initEnemEvents(); refreshApp();
     } catch (error) {
       document.querySelector('.main-content').insertAdjacentHTML('afterbegin', `<div class="empty-state">${escapeHtml(error.message)} Abra o site por um servidor estático e confira o arquivo de dados.</div>`);
     }

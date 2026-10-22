@@ -67,3 +67,8 @@ O contrato de fonte oficial foi endurecido: prova/caderno e gabarito exigem dois
 ### Estados de publicação visíveis ao estudante
 
 O frontend exclui aulas e trilhas `draft` das séries, busca, recentes, trilhas, progresso e da resolução direta de `aula.html`; um cartão de aula não revela o título de uma trilha rascunho. Questões ENEM `draft` e todas as questões `oficial` com `sourceVerified` diferente de `true` são omitidas dos filtros e da listagem, mesmo se o estado for `demo`. O editor só deixa guardar uma questão oficial não conferida como `draft`. Como todos os arquivos publicados por GitHub Pages são públicos, `draft` significa “oculto na interface”, não “privado”; o professor não deve colocar informação confidencial no JSON publicado.
+
+
+### Navegação compacta do Modo ENEM
+
+A listagem do modo ENEM mostrará uma única questão por vez. Um controle acessível com setas anterior/próxima e contador da questão atual em relação ao total percorre apenas os resultados filtrados; alterar ano, aplicação, disciplina ou tema volta à primeira questão. As respostas escolhidas permanecem em memória durante a navegação, para que o aluno possa consultar o feedback ao retornar, sem enviar nem persistir respostas no servidor.
